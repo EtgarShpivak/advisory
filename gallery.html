@@ -79,6 +79,24 @@
             background: #0a0a0a;
         }
 
+        .card-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            z-index: 3;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #d4a04a;
+            color: #000;
+            font-size: 1.1rem;
+            font-weight: 800;
+            border-radius: 50%;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.5);
+        }
+
         .card-preview iframe {
             width: 1280px;
             height: 800px;
@@ -214,7 +232,7 @@
     <div class="header">
         <h1>GTM Advisory — Landing Page Variants</h1>
         <p>11 different designs for the same service. Click any variant to see it full-screen. Which one do you like best?</p>
-        <div class="instruction">💡 Click the ❤️ button on your favorite(s) — results are saved locally so you can share your picks with me</div>
+        <div class="instruction">💡 Each variant has a number (#01–#11). Click ❤️ on your favorite(s) and let me know which number you prefer!</div>
     </div>
 
     <div class="grid" id="gallery"></div>
@@ -250,6 +268,7 @@
             card.className = 'card';
             card.innerHTML = `
                 <div class="card-preview">
+                    <div class="card-badge">#${page.num}</div>
                     <iframe src="${page.file}" loading="lazy" sandbox="allow-same-origin" title="Preview of ${page.title}"></iframe>
                     <a class="overlay" href="${page.file}" target="_blank" title="Open ${page.title} full-screen"></a>
                 </div>
