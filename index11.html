@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GTM Advisory — Etgar Shpivak</title>
+<meta name="description" content="Weekly Go-To-Market advisory for startup founders who need decisions, not meetings.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg-1:#0f0c29;--bg-2:#302b63;--bg-3:#24243e;
+  --violet:#7c3aed;--teal:#14b8a6;
+  --glass:rgba(255,255,255,0.06);--glass-border:rgba(255,255,255,0.1);
+  --glass-hover:rgba(255,255,255,0.1);
+  --text:#e2e8f0;--text-dim:rgba(255,255,255,0.5);
+  --font-body:'Plus Jakarta Sans',sans-serif;
+  --font-heading:'Crimson Pro',serif;
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:var(--font-body);color:var(--text);background:var(--bg-1);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* Noise overlay */
+body::before{content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Animated mesh gradient background */
+.mesh-bg{position:fixed;inset:0;z-index:-2;
+  background:linear-gradient(125deg,#0f0c29 0%,#302b63 25%,#24243e 50%,#1a1a3e 75%,#0f0c29 100%);
+  background-size:400% 400%;
+  animation:meshMove 20s ease infinite;
+}
+@keyframes meshMove{
+  0%{background-position:0% 50%}
+  25%{background-position:100% 0%}
+  50%{background-position:100% 100%}
+  75%{background-position:0% 100%}
+  100%{background-position:0% 50%}
+}
+
+/* Ambient floating orbs */
+.orb{position:fixed;border-radius:50%;filter:blur(80px);z-index:-1;opacity:.3;pointer-events:none}
+.orb-1{width:500px;height:500px;background:radial-gradient(circle,var(--violet),transparent 70%);top:-10%;left:-5%;animation:orbFloat1 15s ease-in-out infinite}
+.orb-2{width:400px;height:400px;background:radial-gradient(circle,var(--teal),transparent 70%);bottom:10%;right:-5%;animation:orbFloat2 18s ease-in-out infinite}
+.orb-3{width:350px;height:350px;background:radial-gradient(circle,#6366f1,transparent 70%);top:40%;left:50%;animation:orbFloat3 22s ease-in-out infinite}
+@keyframes orbFloat1{0%,100%{transform:translate(0,0)}50%{transform:translate(60px,80px)}}
+@keyframes orbFloat2{0%,100%{transform:translate(0,0)}50%{transform:translate(-50px,-60px)}}
+@keyframes orbFloat3{0%,100%{transform:translate(0,0)}33%{transform:translate(-40px,50px)}66%{transform:translate(30px,-30px)}}
+
+/* Scroll progress bar */
+.scroll-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--violet),var(--teal));z-index:10001;width:0%;transition:width .1s linear}
+
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:10000;padding:1rem 2rem;
+  background:rgba(15,12,41,0.6);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--glass-border);
+  display:flex;justify-content:space-between;align-items:center;
+  transition:background .3s}
+nav .logo{font-family:var(--font-heading);font-size:1.3rem;font-weight:700;letter-spacing:-.02em}
+nav .nav-links{display:flex;gap:1.5rem;align-items:center}
+nav .nav-links a{color:var(--text-dim);text-decoration:none;font-size:.85rem;font-weight:500;transition:color .3s}
+nav .nav-links a:hover{color:#fff}
+.nav-cta{background:var(--violet);color:#fff !important;padding:.5rem 1.2rem;border-radius:100px;font-size:.8rem !important;font-weight:600 !important;transition:all .3s !important;box-shadow:0 0 20px rgba(124,58,237,.3)}
+.nav-cta:hover{box-shadow:0 0 30px rgba(124,58,237,.6);transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:10002}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;transition:all .3s}
+
+/* Glass card base */
+.glass{background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid var(--glass-border);border-radius:20px;transition:all .4s cubic-bezier(.4,0,.2,1)}
+.glass:hover{background:var(--glass-hover);border-color:rgba(255,255,255,0.15)}
+
+/* 3D tilt perspective */
+.tilt-card{transform-style:preserve-3d;perspective:1000px;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.tilt-card:hover{transform:rotateY(2deg) rotateX(2deg) translateZ(10px)}
+
+/* Glow borders */
+.glow-border{position:relative}
+.glow-border::before{content:'';position:absolute;inset:-1px;border-radius:inherit;
+  background:linear-gradient(135deg,var(--violet),var(--teal),var(--violet));
+  z-index:-1;opacity:0;transition:opacity .4s;filter:blur(2px)}
+.glow-border:hover::before{opacity:.6}
+
+/* Section wrapper */
+section{padding:6rem 1.5rem;max-width:1200px;margin:0 auto;position:relative}
+.section-eyebrow{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--violet);margin-bottom:.75rem}
+.section-heading{font-family:var(--font-heading);font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.15;margin-bottom:1rem;color:#fff}
+.section-sub{color:var(--text-dim);font-size:1rem;max-width:540px;line-height:1.7}
+
+/* Scroll-triggered animations */
+.reveal{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.4,0,.2,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
+.reveal-delay-5{transition-delay:.5s}
+
+/* ===== HERO ===== */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding-top:6rem}
+.hero-eyebrow{font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.2em;color:var(--text-dim);margin-bottom:2rem}
+.hero h1{font-family:var(--font-heading);font-size:clamp(2.8rem,6vw,5rem);font-weight:700;line-height:1.1;margin-bottom:1.5rem;color:#fff}
+.hero h1 .violet-glow{color:var(--violet);text-shadow:0 0 40px rgba(124,58,237,.5),0 0 80px rgba(124,58,237,.2)}
+.hero h1 .teal-glow{color:var(--teal);text-shadow:0 0 40px rgba(20,184,166,.5),0 0 80px rgba(20,184,166,.2)}
+.hero-sub{font-size:clamp(1rem,2vw,1.2rem);color:var(--text-dim);max-width:560px;margin:0 auto 2rem;line-height:1.7}
+.hero-tags{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-bottom:2rem}
+.hero-tags span{padding:.4rem 1rem;border-radius:100px;font-size:.75rem;font-weight:600;
+  border:1px solid var(--glass-border);color:var(--text-dim);background:var(--glass);backdrop-filter:blur(10px)}
+.hero-micro{font-size:.85rem;color:var(--text-dim);margin-bottom:2rem;opacity:.7}
+.btn-primary{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 2rem;background:var(--violet);color:#fff;
+  border:none;border-radius:100px;font-size:1rem;font-weight:600;cursor:pointer;text-decoration:none;
+  box-shadow:0 0 30px rgba(124,58,237,.35);transition:all .4s;font-family:var(--font-body)}
+.btn-primary:hover{box-shadow:0 0 50px rgba(124,58,237,.6);transform:translateY(-2px)}
+
+/* ===== NUMBERS ===== */
+.numbers{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;padding-top:2rem;padding-bottom:6rem}
+.number-card{padding:2rem;text-align:center}
+.number-card .num{font-family:var(--font-heading);font-size:clamp(2.2rem,4vw,3.2rem);font-weight:700;
+  background:linear-gradient(135deg,var(--violet),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.number-card .num-label{font-size:.85rem;color:var(--text-dim);margin-top:.5rem}
+
+/* ===== PROBLEM / SOLUTION ===== */
+.prob-sol{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.prob-section,.sol-section{padding:2.5rem}
+.prob-pills{display:flex;flex-direction:column;gap:.75rem;margin-top:1.5rem}
+.prob-pill{padding:.8rem 1.2rem;border-radius:12px;font-size:.85rem;color:var(--text-dim);
+  background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.15)}
+.sol-steps{margin-top:1.5rem;display:flex;flex-direction:column;gap:1.2rem}
+.sol-step{display:flex;gap:1rem;align-items:flex-start}
+.sol-step-num{font-family:var(--font-heading);font-size:1.5rem;font-weight:700;color:var(--teal);min-width:2.5rem}
+.sol-step-content h4{font-size:.95rem;font-weight:700;color:#fff;margin-bottom:.25rem}
+.sol-step-content p{font-size:.82rem;color:var(--text-dim);line-height:1.6}
+.sol-callout{margin-top:2rem;padding:1.2rem 1.5rem;border-radius:14px;
+  background:linear-gradient(135deg,rgba(124,58,237,.1),rgba(20,184,166,.08));
+  border:1px solid rgba(124,58,237,.2);font-size:.85rem;color:var(--text-dim);line-height:1.6;font-style:italic}
+
+/* ===== BENTO GRID ===== */
+.bento-header{text-align:center;margin-bottom:3rem}
+.bento-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto;gap:1.2rem}
+.bento-item:nth-child(1){grid-column:span 2}
+.bento-item:nth-child(4){grid-column:span 2}
+.bento-item{padding:1.8rem;cursor:pointer;position:relative;overflow:hidden}
+.bento-item .bento-icon{font-size:1.5rem;margin-bottom:.75rem}
+.bento-item h3{font-family:var(--font-heading);font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:.5rem}
+.bento-item .bento-desc{font-size:.82rem;color:var(--text-dim);line-height:1.6}
+.bento-details{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1);margin-top:0}
+.bento-item.open .bento-details{max-height:300px;margin-top:1rem}
+.bento-detail-line{font-size:.78rem;padding:.4rem .6rem;border-radius:8px;margin-bottom:.4rem;
+  background:rgba(255,255,255,0.03);color:var(--text-dim);line-height:1.5}
+.bento-detail-line strong{color:var(--teal);font-weight:700}
+.bento-toggle{position:absolute;top:1.5rem;right:1.5rem;width:28px;height:28px;border-radius:50%;
+  background:rgba(255,255,255,0.06);border:1px solid var(--glass-border);color:var(--text-dim);
+  display:flex;align-items:center;justify-content:center;font-size:.8rem;transition:transform .3s}
+.bento-item.open .bento-toggle{transform:rotate(45deg)}
+
+/* ===== ABOUT ===== */
+.about-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:3rem;align-items:center}
+.about-img{width:100%;max-width:360px;border-radius:24px;aspect-ratio:1;object-fit:cover;
+  border:2px solid var(--glass-border)}
+.about-text p{font-size:.95rem;color:var(--text-dim);line-height:1.8;margin-bottom:1.5rem}
+.about-creds{display:flex;flex-wrap:wrap;gap:.5rem}
+.about-creds span{font-size:.72rem;padding:.4rem .8rem;border-radius:100px;background:var(--glass);
+  border:1px solid var(--glass-border);color:var(--text-dim);font-weight:600}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials-section{padding-bottom:4rem}
+.testimonials-scroll{display:flex;gap:1.5rem;overflow-x:auto;padding:1rem .5rem 2rem;
+  scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.testimonials-scroll::-webkit-scrollbar{display:none}
+.testimonial-card{min-width:340px;max-width:380px;padding:2rem;scroll-snap-align:start;flex-shrink:0;
+  display:flex;flex-direction:column;justify-content:space-between}
+.testimonial-card blockquote{font-size:.9rem;color:var(--text-dim);line-height:1.7;margin-bottom:1.5rem;font-style:italic}
+.testimonial-author{display:flex;align-items:center;gap:.75rem}
+.testimonial-author img{width:42px;height:42px;border-radius:50%;object-fit:cover;border:1px solid var(--glass-border)}
+.testimonial-author .author-info .name{font-size:.85rem;font-weight:600;color:#fff}
+.testimonial-author .author-info .role{font-size:.72rem;color:var(--text-dim)}
+
+/* ===== FIT CHECK ===== */
+.fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem}
+.fit-card{padding:2rem}
+.fit-card h3{font-family:var(--font-heading);font-size:1.3rem;font-weight:700;margin-bottom:1rem}
+.fit-card.yes h3{color:var(--teal)}
+.fit-card.no h3{color:rgba(239,68,68,.7)}
+.fit-card ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.fit-card li{font-size:.85rem;color:var(--text-dim);padding-left:1.5rem;position:relative;line-height:1.5}
+.fit-card.yes li::before{content:'';position:absolute;left:0;top:6px;width:8px;height:8px;border-radius:50%;background:var(--teal)}
+.fit-card.no li::before{content:'';position:absolute;left:0;top:6px;width:8px;height:8px;border-radius:50%;background:rgba(239,68,68,.5)}
+
+/* ===== PRICING ===== */
+.pricing-wrapper{display:flex;justify-content:center;margin-top:2rem}
+.pricing-card{max-width:520px;width:100%;padding:3rem;text-align:center;position:relative;
+  border:1px solid rgba(124,58,237,.3);
+  box-shadow:0 0 60px rgba(124,58,237,.1),inset 0 0 60px rgba(124,58,237,.03)}
+.pricing-card .price{font-family:var(--font-heading);font-size:clamp(2.5rem,5vw,3.5rem);font-weight:700;
+  background:linear-gradient(135deg,var(--violet),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin:1rem 0}
+.pricing-card .price-period{font-size:1rem;color:var(--text-dim);-webkit-text-fill-color:initial}
+.pricing-features{list-style:none;text-align:left;margin:2rem 0;display:flex;flex-direction:column;gap:.8rem}
+.pricing-features li{font-size:.88rem;color:var(--text-dim);padding-left:1.8rem;position:relative;line-height:1.6}
+.pricing-features li::before{content:'';position:absolute;left:0;top:7px;width:10px;height:10px;border-radius:50%;
+  background:linear-gradient(135deg,var(--violet),var(--teal))}
+.pricing-note{font-size:.82rem;color:var(--text-dim);font-style:italic;margin-top:1.5rem;opacity:.7}
+
+/* ===== CONTACT ===== */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2rem}
+.contact-links{display:flex;flex-direction:column;gap:1rem}
+.contact-link{display:flex;align-items:center;gap:1rem;padding:1rem 1.5rem;text-decoration:none;color:var(--text)}
+.contact-link .cl-icon{font-size:1.3rem}
+.contact-link .cl-text{font-size:.9rem}
+.contact-link .cl-sub{font-size:.72rem;color:var(--text-dim)}
+.contact-form{display:flex;flex-direction:column;gap:1rem}
+.contact-form input,.contact-form textarea{width:100%;padding:.9rem 1.2rem;background:rgba(255,255,255,0.04);
+  border:1px solid var(--glass-border);border-radius:12px;color:#fff;font-family:var(--font-body);font-size:.9rem;
+  outline:none;transition:border-color .3s}
+.contact-form input:focus,.contact-form textarea:focus{border-color:var(--violet)}
+.contact-form textarea{height:100px;resize:vertical}
+.contact-form input::placeholder,.contact-form textarea::placeholder{color:var(--text-dim)}
+
+/* Toast */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);
+  padding:1rem 2rem;border-radius:14px;font-size:.9rem;font-weight:600;z-index:11000;
+  transition:transform .4s cubic-bezier(.4,0,.2,1);
+  background:var(--glass);backdrop-filter:blur(20px);border:1px solid var(--glass-border)}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.toast.success{border-color:var(--teal);color:var(--teal)}
+.toast.error{border-color:#ef4444;color:#ef4444}
+
+/* ===== FOOTER ===== */
+footer{text-align:center;padding:3rem 1.5rem;border-top:1px solid var(--glass-border)}
+footer p{font-size:.85rem;color:var(--text-dim);margin-bottom:.5rem}
+footer a{color:var(--teal);text-decoration:none;font-weight:600;transition:color .3s}
+footer a:hover{color:#fff}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  nav .nav-links{position:fixed;inset:0;background:rgba(15,12,41,0.95);backdrop-filter:blur(30px);
+    flex-direction:column;justify-content:center;align-items:center;gap:2rem;
+    transform:translateX(100%);transition:transform .4s}
+  nav .nav-links.open{transform:translateX(0)}
+  .hamburger{display:flex}
+  .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+  .hamburger.active span:nth-child(2){opacity:0}
+  .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+  .numbers{grid-template-columns:1fr}
+  .prob-sol{grid-template-columns:1fr}
+  .bento-grid{grid-template-columns:1fr}
+  .bento-item:nth-child(1),.bento-item:nth-child(4){grid-column:span 1}
+  .about-grid{grid-template-columns:1fr;text-align:center}
+  .about-img{margin:0 auto}
+  .fit-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .testimonial-card{min-width:290px}
+  .orb{opacity:.15}
+}
+@media(max-width:600px){
+  section{padding:4rem 1rem}
+  .hero h1{font-size:clamp(2.2rem,8vw,3.5rem)}
+}
+</style>
+</head>
+<body>
+
+<!-- Mesh BG + Orbs -->
+<div class="mesh-bg"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<!-- Scroll Progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Nav -->
+<nav>
+  <div class="logo">Etgar Shpivak</div>
+  <div class="nav-links" id="navLinks">
+    <a href="#problem">Problem</a>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact" class="nav-cta">Book a Call</a>
+  </div>
+  <div class="hamburger" id="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow reveal">Go-To-Market Advisory</p>
+  <h1 class="reveal reveal-delay-1">
+    Too much <span class="violet-glow">noise.</span><br>
+    Not enough growth.<br>
+    <span class="teal-glow">Let's fix that.</span>
+  </h1>
+  <p class="hero-sub reveal reveal-delay-2">Weekly Go-To-Market advisory for startup founders who need decisions, not meetings.</p>
+  <div class="hero-tags reveal reveal-delay-3">
+    <span>Vertical SaaS</span>
+    <span>eCommerce</span>
+    <span>B2C / D2C</span>
+    <span>Fintech</span>
+    <span>AdTech / MarTech</span>
+  </div>
+  <p class="hero-micro reveal reveal-delay-4">30 min. No pitch. Just your real challenges.</p>
+  <a href="#contact" class="btn-primary reveal reveal-delay-5">Book a Free Discovery Call</a>
+</section>
+
+<!-- NUMBERS -->
+<section class="numbers">
+  <div class="glass tilt-card number-card reveal">
+    <div class="num">15+</div>
+    <div class="num-label">Years Hands-On</div>
+  </div>
+  <div class="glass tilt-card number-card reveal reveal-delay-1">
+    <div class="num">Exit</div>
+    <div class="num-label">Built &amp; Acquired</div>
+  </div>
+  <div class="glass tilt-card number-card reveal reveal-delay-2">
+    <div class="num">300%</div>
+    <div class="num-label">Revenue Growth</div>
+  </div>
+</section>
+
+<!-- PROBLEM & SOLUTION -->
+<section id="problem">
+  <div class="prob-sol">
+    <div class="glass prob-section reveal">
+      <p class="section-eyebrow">The Problem</p>
+      <h2 class="section-heading" style="font-size:clamp(1.5rem,3vw,2rem)">You don't have a strategy problem. You have too many answers and not enough clarity.</h2>
+      <div class="prob-pills">
+        <div class="prob-pill">Executing but the needle isn't moving</div>
+        <div class="prob-pill">GTM plan exists. Nobody follows it</div>
+        <div class="prob-pill">Every week is a new fire drill</div>
+      </div>
+    </div>
+    <div class="glass sol-section reveal reveal-delay-2">
+      <p class="section-eyebrow" style="color:var(--teal)">The Solution</p>
+      <h2 class="section-heading" style="font-size:clamp(1.5rem,3vw,2rem)">Real decisions. Not another meeting.</h2>
+      <p class="section-sub" style="max-width:100%">Stop optimizing everything. Double down on what works.</p>
+      <div class="sol-steps">
+        <div class="sol-step">
+          <span class="sol-step-num">01</span>
+          <div class="sol-step-content">
+            <h4>ME &mdash; Prep</h4>
+            <p>I review everything before we meet. No cold starts.</p>
+          </div>
+        </div>
+        <div class="sol-step">
+          <span class="sol-step-num">02</span>
+          <div class="sol-step-content">
+            <h4>US &mdash; Session</h4>
+            <p>60 min. We make decisions, not conversation.</p>
+          </div>
+        </div>
+        <div class="sol-step">
+          <span class="sol-step-num">03</span>
+          <div class="sol-step-content">
+            <h4>YOU &mdash; Execute</h4>
+            <p>A prioritized task list. Reviewed next session.</p>
+          </div>
+        </div>
+      </div>
+      <div class="sol-callout">"Your one hour is the output of my preparation — not the other way around."</div>
+    </div>
+  </div>
+</section>
+
+<!-- BENTO GRID - SERVICES -->
+<section id="services">
+  <div class="bento-header reveal">
+    <p class="section-eyebrow">What We Work On</p>
+    <h2 class="section-heading">Real sessions. Real output.</h2>
+    <p class="section-sub" style="margin:0 auto">Every session ends with something you can use. Click to explore.</p>
+  </div>
+  <div class="bento-grid">
+
+    <div class="glass tilt-card glow-border bento-item reveal" onclick="toggleBento(this)">
+      <span class="bento-toggle">+</span>
+      <div class="bento-icon">&#128270;</div>
+      <h3>Hidden Revenue Opportunities</h3>
+      <p class="bento-desc">I find what's already working — the segment nobody's scaling, the channel quietly profitable. Same budget, better numbers.</p>
+      <div class="bento-details">
+        <div class="bento-detail-line"><strong>FOUND</strong> Profitable segment — never targeted</div>
+        <div class="bento-detail-line"><strong>FOUND</strong> Top-converting message — never scaled</div>
+        <div class="bento-detail-line"><strong>RESULT</strong> Same budget. Better numbers.</div>
+      </div>
+    </div>
+
+    <div class="glass tilt-card glow-border bento-item reveal reveal-delay-1" onclick="toggleBento(this)">
+      <span class="bento-toggle">+</span>
+      <div class="bento-icon">&#128202;</div>
+      <h3>Campaign Analysis</h3>
+      <p class="bento-desc">Line by line — creative, audience, offer, landing page. You leave with a kill/fix/scale list.</p>
+      <div class="bento-details">
+        <div class="bento-detail-line"><strong>MEASURED</strong> CRM &rarr; Meta &amp; Google via Offline Conversions</div>
+        <div class="bento-detail-line"><strong>SHIFTED</strong> Optimization leads &rarr; qualified opps</div>
+        <div class="bento-detail-line"><strong>RESULT</strong> CPL flat. SQL rate up 40%</div>
+      </div>
+    </div>
+
+    <div class="glass tilt-card glow-border bento-item reveal reveal-delay-2" onclick="toggleBento(this)">
+      <span class="bento-toggle">+</span>
+      <div class="bento-icon">&#9997;&#65039;</div>
+      <h3>Homepage &amp; Messaging</h3>
+      <p class="bento-desc">We find the real value prop and rewrite headline, subhead, and CTA. Live, together.</p>
+      <div class="bento-details">
+        <div class="bento-detail-line"><strong>BEFORE</strong> "The all-in-one platform for service teams"</div>
+        <div class="bento-detail-line"><strong>AFTER</strong> "Your team closes tickets faster."</div>
+        <div class="bento-detail-line"><strong>CTA</strong> "Get started" &rarr; "See a 3-min demo"</div>
+      </div>
+    </div>
+
+    <div class="glass tilt-card glow-border bento-item reveal" onclick="toggleBento(this)">
+      <span class="bento-toggle">+</span>
+      <div class="bento-icon">&#128640;</div>
+      <h3>GTM Planning &amp; Launch</h3>
+      <p class="bento-desc">Positioning, sequencing, channels. 30-day milestones. Who does what.</p>
+      <div class="bento-details">
+        <div class="bento-detail-line"><strong>WK 1</strong> ICP list — 50 named accounts</div>
+        <div class="bento-detail-line"><strong>WK 2</strong> Cold outbound live</div>
+        <div class="bento-detail-line"><strong>WK 3</strong> First 5 discovery calls</div>
+        <div class="bento-detail-line"><strong>WK 4</strong> Retro + iterate on data</div>
+      </div>
+    </div>
+
+    <div class="glass tilt-card glow-border bento-item reveal reveal-delay-1" onclick="toggleBento(this)">
+      <span class="bento-toggle">+</span>
+      <div class="bento-icon">&#128176;</div>
+      <h3>Budget Allocation</h3>
+      <p class="bento-desc">Based on your stage and data — you leave knowing exactly where the money goes and why.</p>
+      <div class="bento-details">
+        <div class="bento-detail-line"><strong>SEPARATED</strong> Brand vs. performance</div>
+        <div class="bento-detail-line"><strong>FOUND</strong> ~35% conversions were brand searches</div>
+        <div class="bento-detail-line"><strong>RESULT</strong> Reallocated to real incremental channels</div>
+      </div>
+    </div>
+
+    <div class="glass tilt-card glow-border bento-item reveal reveal-delay-2" onclick="toggleBento(this)">
+      <span class="bento-toggle">+</span>
+      <div class="bento-icon">&#127919;</div>
+      <h3>ICP Definition</h3>
+      <p class="bento-desc">We get specific. Until your ICP is a person, not a category.</p>
+      <div class="bento-details">
+        <div class="bento-detail-line"><strong>MAPPED</strong> ~50K addressable accounts globally</div>
+        <div class="bento-detail-line"><strong>SWITCHED</strong> Lead-gen &rarr; thought leadership</div>
+        <div class="bento-detail-line"><strong>RESULT</strong> Inbound leads arrived organically</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="reveal">
+      <img src="src/assets/etgar-portrait.jpg" alt="Etgar Shpivak" class="about-img" loading="lazy">
+    </div>
+    <div class="reveal reveal-delay-2">
+      <p class="section-eyebrow">Why Me</p>
+      <h2 class="section-heading">I've been the founder in that room.</h2>
+      <p style="font-size:.95rem;color:var(--text-dim);line-height:1.8;margin-bottom:1.5rem">Not a consultant who read about it. I built Fixel from zero to hundreds of paying clients — AutoTrader, Purple, Globo — hired wrong, ran low on runway, pivoted, and exited. I've been both the founder and the marketer. I see what you can't, because I'm not inside it.</p>
+      <div class="about-creds">
+        <span>Techstars '18</span>
+        <span>Plug and Play '20</span>
+        <span>Acquired by Logiq</span>
+        <span>Top 25 PPC Hero</span>
+        <span>20K+ Book Sales</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="reveal" style="text-align:center;margin-bottom:2rem">
+    <p class="section-eyebrow">What Founders Say</p>
+    <h2 class="section-heading">Trusted by founders &amp; investors.</h2>
+  </div>
+  <div class="testimonials-scroll">
+
+    <div class="glass testimonial-card tilt-card reveal">
+      <blockquote>"Etgar understands how technology changes what's possible in marketing — and makes it practical for startups at any stage."</blockquote>
+      <div class="testimonial-author">
+        <img src="src/assets/testimonials/sean-simon.jpg" alt="Sean Simon" loading="lazy">
+        <div class="author-info">
+          <div class="name">Sean Simon</div>
+          <div class="role">ex VP Sales, Criteo &amp; PebblePost</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass testimonial-card tilt-card reveal reveal-delay-1">
+      <blockquote>"A great product needs a great go-to-market. Etgar is one of the few professionals I recommend founders work with."</blockquote>
+      <div class="testimonial-author">
+        <img src="src/assets/testimonials/daniel-ziv.jpg" alt="Daniel Ziv" loading="lazy">
+        <div class="author-info">
+          <div class="name">Daniel Ziv</div>
+          <div class="role">Investment Manager, Glilot Capital</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass testimonial-card tilt-card reveal reveal-delay-2">
+      <blockquote>"The rare advisor who does the homework before the meeting, comes with specifics, and leaves you with a clear action plan."</blockquote>
+      <div class="testimonial-author">
+        <img src="src/assets/testimonials/bryan-kujawski.png" alt="Bryan Kujawski" loading="lazy">
+        <div class="author-info">
+          <div class="name">Bryan Kujawski</div>
+          <div class="role">Co-Founder &amp; Board Member</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass testimonial-card tilt-card reveal reveal-delay-3">
+      <blockquote>"His weekly sessions are the most productive hour of my week. Direct, focused, and always resulting in a prioritized roadmap."</blockquote>
+      <div class="testimonial-author">
+        <img src="src/assets/testimonials/guy-kohn.jpg" alt="Guy Kohn" loading="lazy">
+        <div class="author-info">
+          <div class="name">Guy Kohn</div>
+          <div class="role">Founder &amp; CEO, InsurTax</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass testimonial-card tilt-card reveal reveal-delay-4">
+      <blockquote>"Etgar strips away distractions and hands you a clear point of view. He was instrumental in our journey from Techstars to acquisition."</blockquote>
+      <div class="testimonial-author">
+        <img src="src/assets/testimonials/julien-jukema.jpg" alt="Julien Jukema" loading="lazy">
+        <div class="author-info">
+          <div class="name">Julien Jukema</div>
+          <div class="role">Founder &amp; CEO, Anywyse</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FIT CHECK -->
+<section>
+  <div class="reveal" style="text-align:center">
+    <p class="section-eyebrow">Is This For You?</p>
+    <h2 class="section-heading">Fit check.</h2>
+  </div>
+  <div class="fit-grid">
+    <div class="glass fit-card yes reveal">
+      <h3>Yes, if you're...</h3>
+      <ul>
+        <li>Seed or Series A</li>
+        <li>B2B SaaS, eCommerce, Fintech</li>
+        <li>Already talking to customers</li>
+        <li>Want direct feedback</li>
+      </ul>
+    </div>
+    <div class="glass fit-card no reveal reveal-delay-1">
+      <h3>Not for you if...</h3>
+      <ul>
+        <li>No real customers</li>
+        <li>Looking for validation</li>
+        <li>Want polished decks</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="reveal" style="text-align:center">
+    <p class="section-eyebrow">The Offer</p>
+    <h2 class="section-heading">Simple. No lock-in.</h2>
+  </div>
+  <div class="pricing-wrapper">
+    <div class="glass pricing-card reveal">
+      <div class="price">$2,500<span class="price-period">/month</span></div>
+      <ul class="pricing-features">
+        <li>Weekly 60-min session — prepared in advance</li>
+        <li>Pre-session deep dive — I review your data first</li>
+        <li>Clear action list after every session</li>
+        <li>Reachable between sessions for critical decisions</li>
+        <li>No long-term commitment — cancel anytime</li>
+      </ul>
+      <a href="#contact" class="btn-primary" style="width:100%;justify-content:center">Book a Free Discovery Call</a>
+      <p class="pricing-note">First session finds the gaps — every session after builds momentum.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="reveal" style="text-align:center;margin-bottom:2rem">
+    <p class="section-eyebrow">Let's Talk</p>
+    <h2 class="section-heading">Let's talk.</h2>
+    <p class="section-sub" style="margin:0 auto">30 minutes. No pitch. Just whether this makes sense for you.</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-links reveal">
+      <a href="https://wa.me/972546628825" target="_blank" rel="noopener" class="glass contact-link tilt-card">
+        <span class="cl-icon">&#128172;</span>
+        <div>
+          <div class="cl-text">WhatsApp</div>
+          <div class="cl-sub">Quick message</div>
+        </div>
+      </a>
+      <a href="https://www.linkedin.com/in/etgar/" target="_blank" rel="noopener" class="glass contact-link tilt-card">
+        <span class="cl-icon">&#128101;</span>
+        <div>
+          <div class="cl-text">LinkedIn</div>
+          <div class="cl-sub">Connect with me</div>
+        </div>
+      </a>
+      <a href="https://open.spotify.com/show/6vBCY3fsfJu41nq5LQNsDe" target="_blank" rel="noopener" class="glass contact-link tilt-card">
+        <span class="cl-icon">&#127911;</span>
+        <div>
+          <div class="cl-text">Founders' Marketing Compass</div>
+          <div class="cl-sub">Podcast on Spotify</div>
+        </div>
+      </a>
+    </div>
+    <form class="contact-form reveal reveal-delay-2" id="contactForm" onsubmit="submitForm(event)">
+      <input type="text" name="name" placeholder="Name *" required>
+      <input type="email" name="email" placeholder="Email *" required>
+      <input type="text" name="company" placeholder="Company">
+      <textarea name="message" placeholder="Message *" required></textarea>
+      <button type="submit" class="btn-primary" style="width:100%;justify-content:center;border:none">Book a Free Discovery Call &rarr;</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Weekly podcast on founders &amp; marketing</p>
+  <a href="https://open.spotify.com/show/6vBCY3fsfJu41nq5LQNsDe" target="_blank" rel="noopener">Founders' Marketing Compass on Spotify &#8599;</a>
+</footer>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// Scroll progress
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  const p=(window.scrollY/h)*100;
+  document.getElementById('scrollProgress').style.width=p+'%';
+},{passive:true});
+
+// Mobile nav
+function toggleNav(){
+  document.getElementById('navLinks').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('active');
+}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
+  document.getElementById('navLinks').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('active');
+}));
+
+// Scroll reveal
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}});
+},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// Bento accordion
+function toggleBento(el){
+  const wasOpen=el.classList.contains('open');
+  document.querySelectorAll('.bento-item.open').forEach(i=>i.classList.remove('open'));
+  if(!wasOpen)el.classList.add('open');
+}
+
+// Toast
+function showToast(msg,type='success'){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.className='toast '+type+' show';
+  setTimeout(()=>t.classList.remove('show'),4000);
+}
+
+// Form submit
+async function submitForm(e){
+  e.preventDefault();
+  const form=e.target;
+  const btn=form.querySelector('button[type="submit"]');
+  const orig=btn.textContent;
+  btn.textContent='Sending...';btn.disabled=true;
+  const data={
+    name:form.name.value,
+    email:form.email.value,
+    company:form.company.value,
+    message:form.message.value,
+    source:'shpivak.co.il/advisory-v11'
+  };
+  try{
+    const r=await fetch('https://hook.eu2.make.com/fxekjjkmu9ktxrpv2u9gb6c9n8x5iqys',{
+      method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)
+    });
+    if(r.ok){showToast('Message sent! I\'ll be in touch soon.');form.reset()}
+    else{showToast('Something went wrong. Try WhatsApp instead.','error')}
+  }catch(err){showToast('Network error. Try WhatsApp instead.','error')}
+  btn.textContent=orig;btn.disabled=false;
+}
+</script>
+</body>
+</html>

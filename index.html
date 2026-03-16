@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Etgar Shpivak | Go-To-Market Advisory for Startup Founders</title>
+  <meta name="description" content="Weekly GTM advisory for Seed and Series A founders. Campaign analysis, positioning, budget allocation, and go-to-market strategy. Built on 15+ years and a successful exit.">
+  <meta name="author" content="Etgar Shpivak">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://shpivak.co.il/advisory">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Etgar Shpivak | GTM Advisory for Startup Founders">
+  <meta property="og:description" content="Weekly GTM advisory for Seed and Series A founders. Campaign analysis, positioning, budget allocation, and go-to-market strategy.">
+  <meta property="og:url" content="https://shpivak.co.il/advisory">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Etgar Shpivak | GTM Advisory for Startup Founders">
+  <meta name="twitter:description" content="Weekly GTM advisory for Seed and Series A founders. Campaign analysis, positioning, budget allocation, and go-to-market strategy.">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Etgar Shpivak - GTM Advisory",
+    "description": "Weekly Go-To-Market and marketing advisory for startup founders at Seed and Series A stage.",
+    "url": "https://shpivak.co.il/advisory",
+    "founder": {
+      "@type": "Person",
+      "name": "Etgar Shpivak",
+      "jobTitle": "Go-To-Market & Marketing Advisor",
+      "url": "https://www.linkedin.com/in/etgar/",
+      "sameAs": [
+        "https://www.linkedin.com/in/etgar/",
+        "https://open.spotify.com/show/6vBCY3fsfJu41nq5LQNsDe"
+      ]
+    },
+    "areaServed": "Worldwide",
+    "priceRange": "$2,500/month",
+    "serviceType": ["Go-To-Market Strategy", "Marketing Advisory", "Campaign Analysis", "Startup Consulting"],
+    "audience": {
+      "@type": "Audience",
+      "audienceType": "Startup Founders at Seed and Series A"
+    }
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: #1a1a1a; background: #fafaf9; overflow-x: hidden; line-height: 1.6; }
+    ::selection { background: rgba(200,169,110,0.2); }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; border: none; background: none; font: inherit; }
+    input, textarea { font: inherit; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    @media (min-width: 768px) { .container { padding: 0 48px; } }
+    .font-serif { font-family: 'Playfair Display', serif; }
+    .eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+    .eyebrow-line { height: 1px; width: 32px; background: rgba(200,169,110,0.6); }
+    .eyebrow-text { letter-spacing: 0.3em; font-weight: 500; font-size: 11px; text-transform: uppercase; color: #c8a96e; }
+    .section-divider { height: 1px; background: linear-gradient(to right, transparent, #e5e2dc, transparent); }
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up-delay-1 { transition-delay: 120ms; }
+    .fade-up-delay-2 { transition-delay: 240ms; }
+
+    /* HERO */
+    .hero { position: relative; min-height: 100vh; display: flex; align-items: center; background: #0a0d13; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,13,19,0.96) 30%, rgba(10,13,19,0.75) 100%); }
+    .hero-noise { position: absolute; inset: 0; opacity: 0.03; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+    .hero-accent { position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, rgba(200,169,110,0.4), transparent); }
+    .hero-content { position: relative; z-index: 1; max-width: 720px; }
+    .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; line-height: 1.05; margin-bottom: 24px; letter-spacing: -0.02em; }
+    .hero h1 .line-1 { color: #f0ede8; }
+    .hero h1 .line-2 { color: rgba(240,237,232,0.4); }
+    .hero h1 .line-3 { color: #c8a96e; }
+    .hero-subtitle { font-size: 18px; color: #8b919e; line-height: 1.6; margin-bottom: 32px; max-width: 500px; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
+    .hero-tag { padding: 6px 14px; font-size: 12px; font-weight: 500; letter-spacing: 0.04em; color: #6b7280; border: 1px solid rgba(255,255,255,0.06); border-radius: 100px; background: rgba(255,255,255,0.03); }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn-primary { padding: 16px 32px; background: #c8a96e; color: #0a0d13; font-weight: 600; font-size: 15px; border-radius: 100px; transition: all 0.3s; display: inline-block; }
+    .btn-primary:hover { background: #d4b87a; box-shadow: 0 0 40px rgba(200,169,110,0.25); }
+    .btn-secondary { padding: 16px 32px; color: #8b919e; font-weight: 500; font-size: 15px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.08); transition: all 0.3s; display: inline-block; }
+    .btn-secondary:hover { border-color: rgba(255,255,255,0.2); color: #c0c5cf; }
+    .hero-micro { margin-top: 20px; font-size: 13px; color: #4b5157; }
+    .scroll-indicator { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; color: #4b5157; transition: color 0.3s; }
+    .scroll-indicator:hover { color: #8b919e; }
+    .scroll-indicator span { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; }
+    .scroll-indicator svg { width: 16px; height: 16px; animation: bounce 2s infinite; }
+    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+    /* PROBLEM */
+    .problem { padding: 96px 0; background: #fff; }
+    @media (min-width: 768px) { .problem { padding: 128px 0; } }
+    .problem-inner { max-width: 860px; margin: 0 auto; }
+    .problem h2 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 700; line-height: 1.15; margin-bottom: 32px; letter-spacing: -0.01em; }
+    .problem h2 .muted { color: #9ca3af; }
+    .problem-pills { display: flex; flex-direction: column; gap: 12px; margin-bottom: 80px; }
+    @media (min-width: 640px) { .problem-pills { flex-direction: row; } }
+    .problem-pill { flex: 1; padding: 16px 20px; border-radius: 16px; background: #fafaf9; border: 1px solid #f0ede8; font-size: 15px; color: #52525b; font-weight: 500; }
+    .solution-title { font-size: clamp(1.5rem, 3vw, 1.875rem); font-weight: 700; margin-bottom: 12px; }
+    .solution-subtitle { font-size: 17px; color: #52525b; margin-bottom: 40px; max-width: 520px; line-height: 1.6; }
+    .steps-grid { display: grid; gap: 16px; }
+    @media (min-width: 768px) { .steps-grid { grid-template-columns: repeat(3, 1fr); } }
+    .step-card { border-radius: 20px; padding: 24px; background: #fafaf9; border: 1px solid #f0ede8; transition: all 0.3s; }
+    .step-card:hover { border-color: rgba(200,169,110,0.3); box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+    .step-num { font-size: 32px; font-weight: 300; color: rgba(200,169,110,0.3); }
+    .step-who { font-size: 11px; letter-spacing: 0.15em; font-weight: 600; color: #9ca3af; text-transform: uppercase; }
+    .step-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .step-label { font-size: 13px; letter-spacing: 0.15em; font-weight: 700; color: #c8a96e; text-transform: uppercase; margin-bottom: 8px; }
+    .step-text { font-size: 15px; line-height: 1.6; color: #52525b; }
+    .callout-bar { margin-top: 32px; padding: 16px 24px; border-radius: 16px; background: #0a0d13; text-align: center; }
+    .callout-bar p { font-size: 15px; font-weight: 600; color: #f0ede8; }
+
+    /* ABOUT */
+    .about { padding: 96px 0; background: #fafaf9; }
+    @media (min-width: 768px) { .about { padding: 128px 0; } }
+    .about-inner { max-width: 860px; margin: 0 auto; }
+    .about-intro { display: flex; flex-direction: column; gap: 24px; margin-bottom: 64px; }
+    @media (min-width: 768px) { .about-intro { flex-direction: row; gap: 56px; align-items: flex-start; } }
+    .about-photo { width: 112px; height: 112px; border-radius: 16px; overflow: hidden; flex-shrink: 0; box-shadow: 0 0 0 1px rgba(0,0,0,0.05); }
+    @media (min-width: 768px) { .about-photo { width: 144px; height: 144px; } }
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .about h2 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 700; margin-bottom: 20px; line-height: 1.15; letter-spacing: -0.01em; }
+    .about-bio { font-size: 17px; line-height: 1.75; color: #52525b; max-width: 600px; }
+    .cred-grid { display: grid; gap: 16px; margin-bottom: 32px; }
+    @media (min-width: 768px) { .cred-grid { grid-template-columns: repeat(3, 1fr); } }
+    .cred-card { border-radius: 20px; padding: 24px; background: #fff; border: 1px solid #f0ede8; transition: all 0.3s; }
+    .cred-card:hover { border-color: rgba(200,169,110,0.2); box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+    .cred-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; background: rgba(200,169,110,0.08); }
+    .cred-icon svg { width: 16px; height: 16px; color: #c8a96e; }
+    .cred-title { font-weight: 700; font-size: 15px; margin-bottom: 8px; }
+    .cred-text { font-size: 14px; line-height: 1.6; color: #71717a; }
+    .results-box { border-radius: 20px; padding: 24px 32px; background: #fff; border: 1px solid #f0ede8; border-left: 3px solid #c8a96e; }
+    .results-label { font-size: 13px; letter-spacing: 0.15em; font-weight: 700; color: #c8a96e; text-transform: uppercase; margin-bottom: 16px; }
+    .results-list { list-style: none; }
+    .results-list li { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; font-size: 15px; line-height: 1.6; color: #52525b; }
+    .results-list li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #c8a96e; flex-shrink: 0; margin-top: 8px; }
+
+    /* WORK ON */
+    .workon { padding: 96px 0; background: #fff; }
+    @media (min-width: 768px) { .workon { padding: 128px 0; } }
+    .workon h2 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 700; margin-bottom: 16px; letter-spacing: -0.01em; }
+    .workon-desc { font-size: 17px; color: #71717a; line-height: 1.6; }
+    .carousel-wrap { position: relative; margin-top: 56px; }
+    .carousel { display: flex; gap: 20px; overflow-x: auto; padding: 0 24px 16px; scroll-snap-type: x mandatory; scrollbar-width: none; }
+    .carousel::-webkit-scrollbar { display: none; }
+    @media (min-width: 768px) { .carousel { padding: 0 48px 16px; } }
+    .carousel-card { flex-shrink: 0; width: 82vw; max-width: 380px; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; border: 1px solid #f0ede8; scroll-snap-align: start; transition: all 0.3s; }
+    .carousel-card:hover { border-color: rgba(200,169,110,0.2); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+    .cc-top { padding: 28px; flex: 1; display: flex; flex-direction: column; background: #fafaf9; }
+    .cc-cat { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #c8a96e; margin-bottom: 12px; }
+    .cc-sit { font-size: 18px; font-weight: 700; line-height: 1.3; margin-bottom: 12px; }
+    .cc-what { font-size: 14px; line-height: 1.65; color: #71717a; flex: 1; }
+    .cc-bot { padding: 24px; background: #0a0d13; }
+    .cc-out-label { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(200,169,110,0.8); margin-bottom: 8px; }
+    .cc-out-line { font-size: 13px; line-height: 1.6; color: #8b919e; font-family: 'SF Mono', 'Fira Code', monospace; }
+    .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #fff; border: 1px solid #e5e2dc; box-shadow: 0 2px 8px rgba(0,0,0,0.06); color: #c8a96e; transition: all 0.3s; z-index: 10; }
+    .carousel-btn:hover { border-color: #c8a96e; }
+    .carousel-btn.hidden { opacity: 0; pointer-events: none; }
+    .cb-l { left: 8px; } .cb-r { right: 8px; }
+    @media (min-width: 768px) { .cb-l { left: 16px; } .cb-r { right: 16px; } }
+
+    /* PROOF */
+    .proof { padding: 96px 0; background: #fafaf9; }
+    @media (min-width: 768px) { .proof { padding: 128px 0; } }
+    .proof-inner { max-width: 860px; margin: 0 auto; }
+    .proof-grid { display: grid; gap: 20px; }
+    @media (min-width: 768px) { .proof-grid { grid-template-columns: repeat(2, 1fr); } }
+    .proof-card { border-radius: 20px; padding: 28px; background: #fff; border: 1px solid #f0ede8; }
+    .pc-head { display: flex; align-items: center; gap: 8px; margin-bottom: 24px; }
+    .pc-icon { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .pc-icon.yes { background: #ecfdf5; } .pc-icon.no { background: #fef2f2; }
+    .pc-icon svg { width: 14px; height: 14px; }
+    .pc-icon.yes svg { color: #10b981; } .pc-icon.no svg { color: #f87171; }
+    .proof-card h3 { font-size: 13px; letter-spacing: 0.15em; font-weight: 700; text-transform: uppercase; }
+    .proof-card.for h3 { color: #1a1a1a; } .proof-card.not h3 { color: #9ca3af; }
+    .proof-list { list-style: none; }
+    .proof-list li { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; font-size: 15px; line-height: 1.6; }
+    .proof-list li::before { content: ''; width: 4px; height: 4px; border-radius: 50%; flex-shrink: 0; margin-top: 10px; }
+    .proof-card.for .proof-list li { color: #52525b; } .proof-card.for .proof-list li::before { background: #10b981; }
+    .proof-card.not .proof-list li { color: #9ca3af; } .proof-card.not .proof-list li::before { background: #d4d4d8; }
+
+    /* TESTIMONIALS */
+    .testimonials { padding: 96px 0; background: #fff; }
+    @media (min-width: 768px) { .testimonials { padding: 128px 0; } }
+    .testimonials h2 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 700; letter-spacing: -0.01em; }
+    .tcarousel { display: flex; gap: 20px; overflow-x: auto; padding: 0 24px 16px; scroll-snap-type: x mandatory; scrollbar-width: none; }
+    .tcarousel::-webkit-scrollbar { display: none; }
+    @media (min-width: 768px) { .tcarousel { padding: 0 48px 16px; } }
+    .tcard { flex-shrink: 0; width: 85vw; max-width: 400px; border-radius: 20px; padding: 32px; display: flex; flex-direction: column; background: #fafaf9; border: 1px solid #f0ede8; scroll-snap-align: start; min-height: 300px; transition: all 0.3s; }
+    .tcard:hover { border-color: rgba(200,169,110,0.2); box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+    .tq-mark { font-size: 48px; line-height: 1; color: rgba(200,169,110,0.3); font-family: 'Playfair Display', serif; margin-bottom: 8px; }
+    .tq { font-size: 16px; line-height: 1.75; color: #52525b; flex: 1; margin-bottom: 24px; }
+    .tf { padding-top: 20px; border-top: 1px solid #f0ede8; }
+    .ta { display: flex; align-items: center; justify-content: space-between; }
+    .ta-info { display: flex; align-items: center; gap: 12px; }
+    .ta-img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 1px rgba(0,0,0,0.05); }
+    .ta-name { font-weight: 600; font-size: 14px; }
+    .ta-title { font-size: 13px; color: #9ca3af; margin-top: 2px; }
+    .ta-li { color: #0a66c2; transition: color 0.3s; flex-shrink: 0; }
+    .ta-li:hover { color: #004182; }
+    .ta-li svg { width: 16px; height: 16px; }
+
+    /* PRICING */
+    .pricing { padding: 96px 0; background: #0a0d13; position: relative; }
+    @media (min-width: 768px) { .pricing { padding: 112px 0; } }
+    .pricing-inner { max-width: 600px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+    .pricing-amount { font-size: clamp(3rem, 7vw, 3.75rem); font-weight: 700; color: #f0ede8; letter-spacing: -0.02em; }
+    .pricing-period { font-size: 18px; color: #6b7280; font-weight: 400; margin-left: 4px; }
+    .pricing-list { list-style: none; text-align: left; max-width: 420px; margin: 32px auto 40px; }
+    .pricing-list li { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; font-size: 15px; line-height: 1.6; color: #8b919e; }
+    .pricing-check { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; background: rgba(200,169,110,0.1); }
+    .pricing-check svg { width: 12px; height: 12px; color: #c8a96e; }
+    .pricing-note { font-size: 14px; color: #4b5157; max-width: 360px; margin: 0 auto; line-height: 1.65; }
+
+    /* CONTACT */
+    .contact { padding: 96px 0; background: #fafaf9; }
+    @media (min-width: 768px) { .contact { padding: 112px 0; } }
+    .contact-inner { max-width: 860px; margin: 0 auto; }
+    .contact h2 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 700; margin-bottom: 12px; letter-spacing: -0.01em; }
+    .contact-sub { font-size: 17px; color: #71717a; max-width: 420px; margin: 0 auto 56px; }
+    .contact-grid { display: grid; gap: 48px; }
+    @media (min-width: 768px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+    .fg { margin-bottom: 20px; }
+    .fl { display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #52525b; margin-bottom: 8px; }
+    .fi, .ft { display: block; width: 100%; padding: 12px 16px; background: #fff; border: 1px solid #e5e2dc; border-radius: 12px; font-size: 15px; color: #1a1a1a; transition: all 0.2s; outline: none; }
+    .fi::placeholder, .ft::placeholder { color: #c0c0c0; }
+    .fi:focus, .ft:focus { border-color: rgba(200,169,110,0.5); box-shadow: 0 0 0 3px rgba(200,169,110,0.1); }
+    .ft { min-height: 100px; resize: vertical; }
+    .fs { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 16px; background: #0a0d13; color: #fff; font-weight: 600; font-size: 15px; border-radius: 100px; transition: all 0.3s; cursor: pointer; border: none; }
+    .fs:hover { background: #1a1f2e; }
+    .fs:disabled { opacity: 0.5; cursor: not-allowed; }
+    .wa-sec { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+    .wa-icon { width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; background: #ecfdf5; margin-bottom: 20px; }
+    .wa-icon svg { width: 24px; height: 24px; color: #10b981; }
+    .wa-t { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .wa-d { font-size: 15px; color: #71717a; margin-bottom: 24px; }
+    .btn-wa { display: inline-block; padding: 14px 32px; background: #16a34a; color: #fff; font-weight: 600; font-size: 15px; border-radius: 100px; transition: all 0.3s; }
+    .btn-wa:hover { background: #15803d; }
+    .li-link { display: inline-block; margin-top: 24px; font-size: 13px; font-weight: 600; color: #c8a96e; transition: color 0.3s; }
+    .li-link:hover { color: #b8954e; }
+
+    /* FOOTER */
+    .footer { padding: 48px 0; background: #fff; border-top: 1px solid #f0ede8; text-align: center; }
+    .fp { font-size: 15px; color: #71717a; margin-bottom: 8px; }
+    .flink { font-size: 15px; font-weight: 700; color: #c8a96e; transition: color 0.3s; }
+    .flink:hover { color: #b8954e; }
+
+    /* STICKY BAR */
+    .sticky-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 50; padding: 12px 16px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-top: 1px solid #f0ede8; align-items: center; justify-content: space-between; }
+    .sticky-bar.show { display: flex; }
+    @media (min-width: 768px) { .sticky-bar { display: none !important; } }
+    .sb-text { font-size: 13px; font-weight: 600; color: #52525b; }
+    .sb-btn { padding: 8px 20px; font-size: 13px; font-weight: 700; border-radius: 100px; background: #c8a96e; color: #0a0d13; transition: all 0.3s; display: inline-block; }
+    .sb-btn:hover { background: #d4b87a; }
+
+    /* TOAST */
+    .toast { position: fixed; bottom: 24px; right: 24px; z-index: 100; padding: 16px 24px; border-radius: 12px; font-size: 14px; font-weight: 500; transform: translateY(120%); transition: transform 0.3s ease; }
+    .toast.show { transform: translateY(0); }
+    .toast.success { background: #0a0d13; color: #f0ede8; }
+    .toast.error { background: #dc2626; color: #fff; }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-noise"></div>
+    <div class="hero-accent"></div>
+    <div class="container">
+      <div class="hero-content fade-up">
+        <div class="eyebrow">
+          <div class="eyebrow-line"></div>
+          <span class="eyebrow-text">Etgar Shpivak</span>
+        </div>
+        <h1 class="font-serif">
+          <span class="line-1">Too much noise.</span><br>
+          <span class="line-2">Not enough growth.</span><br>
+          <span class="line-3">Let's fix that.</span>
+        </h1>
+        <p class="hero-subtitle">Weekly Go-To-Market advisory for startup founders who need decisions, not meetings.</p>
+        <div class="hero-tags" role="list" aria-label="Industries served">
+          <span class="hero-tag" role="listitem">Vertical SaaS</span>
+          <span class="hero-tag" role="listitem">eCommerce</span>
+          <span class="hero-tag" role="listitem">B2C / D2C</span>
+          <span class="hero-tag" role="listitem">Fintech</span>
+          <span class="hero-tag" role="listitem">AdTech / MarTech</span>
+        </div>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn-primary">Book a Free Discovery Call</a>
+          <a href="#about" class="btn-secondary">Learn More</a>
+        </div>
+        <p class="hero-micro">30 min. No pitch. Just your real challenges.</p>
+      </div>
+    </div>
+    <a href="#problem" class="scroll-indicator" aria-label="Scroll down">
+      <span>Scroll</span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+    </a>
+  </section>
+
+  <!-- PROBLEM & SOLUTION -->
+  <section class="problem" id="problem">
+    <div class="section-divider"></div>
+    <div class="container" style="padding-top:96px">
+      <div class="problem-inner">
+        <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">The Problem</span></div>
+        <h2 class="font-serif fade-up">You don't have a strategy problem. <span class="muted">You have too many answers and not enough clarity.</span></h2>
+        <div class="problem-pills">
+          <div class="problem-pill fade-up">Executing but the needle isn't moving</div>
+          <div class="problem-pill fade-up fade-up-delay-1">GTM plan exists. Nobody follows it</div>
+          <div class="problem-pill fade-up fade-up-delay-2">Every week is a new fire drill</div>
+        </div>
+        <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">The Solution</span></div>
+        <h3 class="solution-title font-serif fade-up">Real decisions. Not another meeting.</h3>
+        <p class="solution-subtitle fade-up">Stop optimizing everything. Double down on what works.</p>
+        <div class="steps-grid">
+          <article class="step-card fade-up"><div class="step-head"><span class="step-num">01</span><span class="step-who">Me</span></div><p class="step-label">Prep</p><p class="step-text">I review everything before we meet. No cold starts.</p></article>
+          <article class="step-card fade-up fade-up-delay-1"><div class="step-head"><span class="step-num">02</span><span class="step-who">Us</span></div><p class="step-label">Session</p><p class="step-text">60 min. We make decisions, not conversation.</p></article>
+          <article class="step-card fade-up fade-up-delay-2"><div class="step-head"><span class="step-num">03</span><span class="step-who">You</span></div><p class="step-label">Execute</p><p class="step-text">A prioritized task list. Reviewed next session.</p></article>
+        </div>
+        <div class="callout-bar fade-up"><p>Your one hour is the output of my preparation — not the other way around.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="section-divider"></div>
+    <div class="container" style="padding-top:96px">
+      <div class="about-inner">
+        <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Why Me</span></div>
+        <div class="about-intro fade-up">
+          <div class="about-photo"><img src="src/assets/etgar-portrait.jpg" alt="Etgar Shpivak - Go-To-Market Advisor" width="144" height="144" loading="lazy"></div>
+          <div>
+            <h2 class="font-serif">I've been the founder in that room.</h2>
+            <p class="about-bio">Not a consultant who read about it. I built Fixel from zero to hundreds of paying clients — AutoTrader, Purple, Globo — hired wrong, ran low on runway, pivoted, and exited. I've been both the founder and the marketer. I see what you can't, because I'm not inside it.</p>
+          </div>
+        </div>
+        <div class="cred-grid">
+          <article class="cred-card fade-up">
+            <div class="cred-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div>
+            <h3 class="cred-title">Built & sold a startup</h3>
+            <p class="cred-text">Co-founded Fixel. Up to 300% revenue growth for clients. Acquired by Logiq (2020). Techstars Atlanta '18, Plug and Play '20.</p>
+          </article>
+          <article class="cred-card fade-up fade-up-delay-1">
+            <div class="cred-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+            <h3 class="cred-title">15+ years hands-on</h3>
+            <p class="cred-text">Running campaigns across Meta, Google, TikTok, and programmatic. I've sat in the seat — I know what's broken and how to fix it.</p>
+          </article>
+          <article class="cred-card fade-up fade-up-delay-2">
+            <div class="cred-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+            <h3 class="cred-title">Top 25 in paid advertising</h3>
+            <p class="cred-text">Recognized by PPC Hero globally. Co-authored a bestselling marketing book — 20,000+ copies sold.</p>
+          </article>
+        </div>
+        <div class="results-box fade-up">
+          <p class="results-label">Results</p>
+          <ul class="results-list">
+            <li>Mentored a founder from early product to acquisition</li>
+            <li>Built initial sales infrastructure for US market entry</li>
+            <li>Helped a FinTech refocus ICP — LTV up 50%, CAC down 30%</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE WORK ON -->
+  <section class="workon" id="workon">
+    <div class="section-divider"></div>
+    <div class="container" style="padding-top:96px">
+      <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">What We Work On</span></div>
+      <h2 class="font-serif fade-up">Real sessions. Real output.</h2>
+      <p class="workon-desc fade-up">Every session ends with something you can use. Not a framework.</p>
+    </div>
+    <div class="carousel-wrap">
+      <button class="carousel-btn cb-l hidden" id="wl" aria-label="Scroll left"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg></button>
+      <button class="carousel-btn cb-r" id="wr" aria-label="Scroll right"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></button>
+      <div class="carousel" id="wc" role="list" aria-label="Session examples">
+        <article class="carousel-card" role="listitem"><div class="cc-top"><p class="cc-cat">Hidden Opportunities</p><p class="cc-sit font-serif">"We're running. Nothing's compounding."</p><p class="cc-what">I find what's already working — the segment nobody's scaling, the channel quietly profitable.</p></div><div class="cc-bot"><p class="cc-out-label">Session Output</p><p class="cc-out-line">FOUND: Profitable segment — never targeted</p><p class="cc-out-line">FOUND: Top-converting message — never scaled</p><p class="cc-out-line">RESULT: Same budget. Better numbers.</p></div></article>
+        <article class="carousel-card" role="listitem"><div class="cc-top"><p class="cc-cat">Campaign Analysis</p><p class="cc-sit font-serif">"Campaigns are running. Nothing converts."</p><p class="cc-what">Line by line — creative, audience, offer, landing page. You leave with a kill/fix/scale list.</p></div><div class="cc-bot"><p class="cc-out-label">Session Output</p><p class="cc-out-line">MEASURED: CRM → Meta & Google via Offline Conversions</p><p class="cc-out-line">SHIFTED: Optimization leads → qualified opps</p><p class="cc-out-line">RESULT: CPL flat. SQL rate up 40%</p></div></article>
+        <article class="carousel-card" role="listitem"><div class="cc-top"><p class="cc-cat">Homepage Messaging</p><p class="cc-sit font-serif">"The homepage explains us. Nobody cares."</p><p class="cc-what">We find the real value prop and rewrite headline, subhead, and CTA. Live, together.</p></div><div class="cc-bot"><p class="cc-out-label">Session Output</p><p class="cc-out-line">BEFORE: "The all-in-one platform for service teams"</p><p class="cc-out-line">AFTER: "Your team closes tickets faster."</p><p class="cc-out-line">CTA: "Get started" → "See a 3-min demo"</p></div></article>
+        <article class="carousel-card" role="listitem"><div class="cc-top"><p class="cc-cat">GTM Planning</p><p class="cc-sit font-serif">"Launching next month. Plan is vague."</p><p class="cc-what">Positioning, sequencing, channels. 30-day milestones. Who does what.</p></div><div class="cc-bot"><p class="cc-out-label">Session Output</p><p class="cc-out-line">Wk 1: ICP list — 50 named accounts</p><p class="cc-out-line">Wk 2: Cold outbound live</p><p class="cc-out-line">Wk 3: First 5 discovery calls</p><p class="cc-out-line">Wk 4: Retro + iterate on data</p></div></article>
+        <article class="carousel-card" role="listitem"><div class="cc-top"><p class="cc-cat">Budget Allocation</p><p class="cc-sit font-serif">"€8K/mo and three channels want more."</p><p class="cc-what">Based on your stage and data — you leave knowing exactly where the money goes and why.</p></div><div class="cc-bot"><p class="cc-out-label">Session Output</p><p class="cc-out-line">SEPARATED: Brand vs. performance</p><p class="cc-out-line">MEASURED: Incremental ROAS, not platform-reported</p><p class="cc-out-line">FOUND: ~35% conversions were brand searches</p><p class="cc-out-line">REALLOCATED: To real incremental channels</p></div></article>
+        <article class="carousel-card" role="listitem"><div class="cc-top"><p class="cc-cat">ICP Definition</p><p class="cc-sit font-serif">"Selling to everyone. Converting no one."</p><p class="cc-what">We get specific. Until your ICP is a person, not a category.</p></div><div class="cc-bot"><p class="cc-out-label">Session Output</p><p class="cc-out-line">MAPPED: ~50K addressable accounts globally</p><p class="cc-out-line">SWITCHED: Lead-gen → thought leadership</p><p class="cc-out-line">RESULT: Inbound leads arrived organically</p></div></article>
+        <article class="carousel-card" role="listitem"><div class="cc-top"><p class="cc-cat">Landing Page CRO</p><p class="cc-sit font-serif">"Getting traffic. Page isn't working."</p><p class="cc-what">We go through the page like a skeptical visitor. I tell you what to fix first.</p></div><div class="cc-bot"><p class="cc-out-label">Session Output</p><p class="cc-out-line">Fix 1: Social proof above the fold</p><p class="cc-out-line">Fix 2: Remove 3 form fields</p><p class="cc-out-line">Fix 3: CTA → "See a 3-min demo"</p><p class="cc-out-line">Result: Conversion rate up 2.1x</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- IS THIS FOR YOU -->
+  <section class="proof" id="proof">
+    <div class="section-divider"></div>
+    <div class="container" style="padding-top:96px">
+      <div class="proof-inner">
+        <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Is This For You</span></div>
+        <div class="proof-grid">
+          <article class="proof-card for fade-up"><div class="pc-head"><div class="pc-icon yes"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div><h3>This is for you if</h3></div><ul class="proof-list"><li>Seed or Series A, bootstrapped or funded</li><li>B2B SaaS, eCommerce, Fintech, or similar</li><li>Already talking to customers</li><li>You want direct feedback, no sugarcoating</li></ul></article>
+          <article class="proof-card not fade-up fade-up-delay-1"><div class="pc-head"><div class="pc-icon no"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></div><h3>Not for you if</h3></div><ul class="proof-list"><li>No real customers yet</li><li>Looking for validation, not direction</li><li>Want polished decks and soft feedback</li></ul></article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="section-divider"></div>
+    <div class="container" style="padding-top:96px">
+      <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Testimonials</span></div>
+      <h2 class="font-serif fade-up" style="margin-bottom:56px">People I've worked with.</h2>
+    </div>
+    <div class="carousel-wrap">
+      <button class="carousel-btn cb-l hidden" id="tl" aria-label="Scroll left"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg></button>
+      <button class="carousel-btn cb-r" id="tr" aria-label="Scroll right"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></button>
+      <div class="tcarousel" id="tc" role="list" aria-label="Client testimonials">
+        <article class="tcard" role="listitem"><div class="tq-mark">"</div><blockquote class="tq">Etgar understands how technology changes what's possible in marketing — and makes it practical for startups at any stage. Founders who work with him stop guessing and start executing.</blockquote><div class="tf"><div class="ta"><div class="ta-info"><img src="src/assets/testimonials/sean-simon.jpg" alt="Sean Simon" class="ta-img" width="40" height="40" loading="lazy"><div><p class="ta-name">Sean Simon</p><p class="ta-title">ex VP Sales, Criteo & PebblePost</p></div></div><a href="https://www.linkedin.com/in/seansimon/" target="_blank" rel="noopener noreferrer" class="ta-li" aria-label="Sean Simon on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a></div></div></article>
+        <article class="tcard" role="listitem"><div class="tq-mark">"</div><blockquote class="tq">A great product needs a great go-to-market. Etgar is one of the few professionals I recommend founders work with. He's been in the room as a builder, not just an advisor.</blockquote><div class="tf"><div class="ta"><div class="ta-info"><img src="src/assets/testimonials/daniel-ziv.jpg" alt="Daniel Ziv" class="ta-img" width="40" height="40" loading="lazy"><div><p class="ta-name">Daniel Ziv</p><p class="ta-title">Investment Manager, Glilot Capital</p></div></div><a href="https://www.linkedin.com/in/danielziv/" target="_blank" rel="noopener noreferrer" class="ta-li" aria-label="Daniel Ziv on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a></div></div></article>
+        <article class="tcard" role="listitem"><div class="tq-mark">"</div><blockquote class="tq">The rare advisor who does the homework before the meeting, comes with specifics, and leaves you with a clear action plan every single time.</blockquote><div class="tf"><div class="ta"><div class="ta-info"><img src="src/assets/testimonials/bryan-kujawski.png" alt="Bryan Kujawski" class="ta-img" width="40" height="40" loading="lazy"><div><p class="ta-name">Bryan Kujawski</p><p class="ta-title">Co-Founder & Board Member</p></div></div><a href="https://www.linkedin.com/in/bryan-kujawski-69b649/" target="_blank" rel="noopener noreferrer" class="ta-li" aria-label="Bryan Kujawski on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a></div></div></article>
+        <article class="tcard" role="listitem"><div class="tq-mark">"</div><blockquote class="tq">His weekly sessions are the most productive hour of my week. Direct, focused, and always resulting in a prioritized roadmap we can execute immediately.</blockquote><div class="tf"><div class="ta"><div class="ta-info"><img src="src/assets/testimonials/guy-kohn.jpg" alt="Guy Kohn" class="ta-img" width="40" height="40" loading="lazy"><div><p class="ta-name">Guy Kohn</p><p class="ta-title">Founder & CEO, InsurTax</p></div></div><a href="https://www.linkedin.com/in/gkohn/" target="_blank" rel="noopener noreferrer" class="ta-li" aria-label="Guy Kohn on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a></div></div></article>
+        <article class="tcard" role="listitem"><div class="tq-mark">"</div><blockquote class="tq">Etgar strips away distractions and hands you a clear point of view. He was instrumental in our journey from Techstars to acquisition.</blockquote><div class="tf"><div class="ta"><div class="ta-info"><img src="src/assets/testimonials/julien-jukema.jpg" alt="Julien Jukema" class="ta-img" width="40" height="40" loading="lazy"><div><p class="ta-name">Julien Jukema</p><p class="ta-title">Founder & CEO, Anywyse</p></div></div><a href="https://www.linkedin.com/in/julien-jukema-8b1aa7114/" target="_blank" rel="noopener noreferrer" class="ta-li" aria-label="Julien Jukema on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a></div></div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="hero-noise"></div>
+    <div class="hero-accent"></div>
+    <div class="container">
+      <div class="pricing-inner fade-up">
+        <div class="eyebrow" style="justify-content:center"><div class="eyebrow-line"></div><span class="eyebrow-text">The Offer</span><div class="eyebrow-line"></div></div>
+        <p class="pricing-amount">$2,500<span class="pricing-period">/month</span></p>
+        <ul class="pricing-list">
+          <li><span class="pricing-check"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Weekly 60-min session — prepared in advance, focused on decisions</li>
+          <li><span class="pricing-check"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Pre-session deep dive — I review your data before we meet</li>
+          <li><span class="pricing-check"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Clear action list after every session</li>
+          <li><span class="pricing-check"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>No long-term commitment — cancel anytime</li>
+        </ul>
+        <p class="pricing-note">Between sessions, I'm reachable for critical decisions. First session finds the gaps — every session after builds momentum.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <div style="text-align:center">
+          <h2 class="font-serif fade-up">Let's talk.</h2>
+          <p class="contact-sub fade-up">30 minutes. No pitch. Just whether this makes sense for you.</p>
+        </div>
+        <div class="contact-grid">
+          <form id="cf">
+            <div class="fg"><label class="fl" for="name">Name *</label><input class="fi" type="text" id="name" name="name" placeholder="Your full name" required></div>
+            <div class="fg"><label class="fl" for="email">Email *</label><input class="fi" type="email" id="email" name="email" placeholder="your@email.com" required></div>
+            <div class="fg"><label class="fl" for="company">Company</label><input class="fi" type="text" id="company" name="company" placeholder="Your company name"></div>
+            <div class="fg"><label class="fl" for="message">Message *</label><textarea class="ft" id="message" name="message" placeholder="Tell me about your startup..." required></textarea></div>
+            <button type="submit" class="fs" id="sb"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>Book a Free Discovery Call</button>
+          </form>
+          <div class="wa-sec">
+            <div class="wa-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></div>
+            <h3 class="wa-t">Prefer WhatsApp?</h3>
+            <p class="wa-d">Perfect for a fast intro.</p>
+            <a href="https://wa.me/972546628825" target="_blank" rel="noopener noreferrer" class="btn-wa">Chat on WhatsApp</a>
+            <a href="https://www.linkedin.com/in/etgar/" target="_blank" rel="noopener noreferrer" class="li-link">LinkedIn →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p class="fp">Weekly podcast on founders & marketing</p>
+      <a href="https://open.spotify.com/show/6vBCY3fsfJu41nq5LQNsDe" target="_blank" rel="noopener noreferrer" class="flink">Founders' Marketing Compass on Spotify ↗</a>
+    </div>
+  </footer>
+
+  <!-- Mobile Sticky Bar -->
+  <div class="sticky-bar" id="sb-bar"><span class="sb-text">GTM Advisory — $2,500/mo</span><a href="#contact" class="sb-btn">Get Started</a></div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // Fade-up on scroll
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+    // Carousel
+    function initCarousel(cId, lId, rId) {
+      const c = document.getElementById(cId), l = document.getElementById(lId), r = document.getElementById(rId);
+      if (!c||!l||!r) return;
+      function chk() { l.classList.toggle('hidden', c.scrollLeft<=10); r.classList.toggle('hidden', c.scrollLeft>=c.scrollWidth-c.clientWidth-10); }
+      c.addEventListener('scroll', chk, {passive:true}); window.addEventListener('resize', chk); chk();
+      l.addEventListener('click', () => c.scrollBy({left:-c.clientWidth*0.8,behavior:'smooth'}));
+      r.addEventListener('click', () => c.scrollBy({left:c.clientWidth*0.8,behavior:'smooth'}));
+    }
+    initCarousel('wc','wl','wr');
+    initCarousel('tc','tl','tr');
+
+    // Sticky bar
+    window.addEventListener('scroll', () => {
+      const h=document.getElementById('hero'), ct=document.getElementById('contact'), b=document.getElementById('sb-bar');
+      if(!h||!ct||!b) return;
+      b.classList.toggle('show', h.getBoundingClientRect().bottom<0 && ct.getBoundingClientRect().top>window.innerHeight);
+    }, {passive:true});
+
+    // Toast
+    function showToast(msg, type) { const t=document.getElementById('toast'); t.textContent=msg; t.className='toast '+type+' show'; setTimeout(()=>t.classList.remove('show'),4000); }
+
+    // Form
+    document.getElementById('cf').addEventListener('submit', async e => {
+      e.preventDefault();
+      const b=document.getElementById('sb'), f=e.target;
+      const d={name:f.name.value,email:f.email.value,company:f.company.value,message:f.message.value,timestamp:new Date().toISOString(),source:'shpivak.co.il/advisory'};
+      b.disabled=true; b.textContent='Sending...';
+      try {
+        const r=await fetch('https://hook.eu2.make.com/fxekjjkmu9ktxrpv2u9gb6c9n8x5iqys',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)});
+        if(r.ok){showToast("Message sent! I'll get back to you within 24 hours.",'success');f.reset();}else throw 0;
+      } catch { showToast('Failed to send. Try WhatsApp instead.','error'); }
+      finally { b.disabled=false; b.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>Book a Free Discovery Call'; }
+    });
+  </script>
+</body>
+</html>

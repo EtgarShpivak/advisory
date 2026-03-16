@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Etgar Shpivak | Go-To-Market Advisory for Startup Founders</title>
+  <meta name="description" content="Weekly GTM advisory for Seed and Series A founders. Campaign analysis, positioning, budget allocation, and go-to-market strategy. Built on 15+ years and a successful exit.">
+  <meta name="author" content="Etgar Shpivak">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://shpivak.co.il/advisory">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Etgar Shpivak | GTM Advisory for Startup Founders">
+  <meta property="og:description" content="Weekly GTM advisory for Seed and Series A founders. Campaign analysis, positioning, budget allocation, and go-to-market strategy.">
+  <meta property="og:url" content="https://shpivak.co.il/advisory">
+  <meta property="og:image" content="https://shpivak.co.il/assets/generated/hero-trajectory.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Etgar Shpivak | GTM Advisory for Startup Founders">
+  <meta name="twitter:description" content="Weekly GTM advisory for Seed and Series A founders. Campaign analysis, positioning, budget allocation, and go-to-market strategy.">
+  <meta name="twitter:image" content="https://shpivak.co.il/assets/generated/hero-trajectory.jpg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Etgar Shpivak - GTM Advisory",
+    "description": "Weekly Go-To-Market and marketing advisory for startup founders at Seed and Series A stage.",
+    "url": "https://shpivak.co.il/advisory",
+    "founder": {
+      "@type": "Person",
+      "name": "Etgar Shpivak",
+      "jobTitle": "Go-To-Market & Marketing Advisor",
+      "url": "https://www.linkedin.com/in/etgar/"
+    },
+    "areaServed": "Worldwide",
+    "priceRange": "$2,500/month",
+    "serviceType": ["Go-To-Market Strategy", "Marketing Advisory", "Campaign Analysis", "Startup Consulting"]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&family=Source+Serif+4:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Outfit', sans-serif; font-weight: 400; color: var(--text); background: var(--bg); overflow-x: hidden; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    ::selection { background: rgba(232,168,56,0.25); color: #fff; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; border: none; background: none; font: inherit; }
+
+    :root {
+      --bg: #0c0f1a;
+      --bg-card: #141829;
+      --accent: #e8a838;
+      --accent-dim: rgba(232,168,56,0.15);
+      --text: #eceef4;
+      --text-dim: #6b7493;
+      --border: #1e2340;
+      --serif: 'Source Serif 4', serif;
+    }
+
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+    @media (min-width: 768px) { .container { padding: 0 48px; } }
+
+    /* ─── NAV ─── */
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 0; background: rgba(12,15,26,0.8); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid rgba(30,35,64,0.5); transition: padding 0.3s; }
+    .nav.scrolled { padding: 10px 0; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+    .nav-name { font-weight: 700; font-size: 18px; letter-spacing: 0.02em; }
+    .nav-name span { color: var(--accent); }
+    .nav-cta { font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); padding: 10px 28px; border: 1.5px solid var(--accent); border-radius: 100px; transition: all 0.3s; }
+    .nav-cta:hover { background: var(--accent); color: var(--bg); }
+
+    /* ─── HERO ─── */
+    .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 0 80px; position: relative; overflow: hidden; }
+    .hero-grid { display: grid; gap: 40px; align-items: center; }
+    @media (min-width: 768px) { .hero-grid { grid-template-columns: 1fr 1fr; gap: 48px; } }
+    .hero-text { position: relative; z-index: 2; }
+    .hero-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+    .hero-eyebrow::before { content: ''; width: 32px; height: 2px; background: var(--accent); }
+    .hero h1 { font-size: clamp(2.4rem, 5.5vw, 4rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 24px; }
+    .hero h1 .line { display: block; }
+    .hero h1 .line-dim { color: var(--text-dim); }
+    .hero h1 .line-accent { color: var(--accent); }
+    .hero-sub { font-size: 17px; font-weight: 300; color: var(--text-dim); max-width: 440px; margin-bottom: 32px; line-height: 1.7; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
+    .hero-tag { padding: 6px 16px; border-radius: 100px; font-size: 12px; font-weight: 500; border: 1px solid var(--border); color: var(--text-dim); transition: all 0.3s; }
+    .hero-tag:hover { border-color: var(--accent); color: var(--accent); }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-bottom: 16px; }
+    .hero-micro { font-size: 13px; color: var(--text-dim); font-weight: 300; font-family: var(--serif); font-style: italic; }
+
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 18px 36px; background: var(--accent); color: var(--bg); font-weight: 700; font-size: 14px; border-radius: 100px; transition: all 0.3s; letter-spacing: 0.02em; }
+    .btn-primary:hover { box-shadow: 0 0 48px rgba(232,168,56,0.3); transform: translateY(-2px); }
+    .btn-primary svg { width: 16px; height: 16px; }
+    .btn-ghost { font-size: 14px; font-weight: 500; color: var(--text-dim); display: inline-flex; align-items: center; gap: 6px; transition: color 0.3s; }
+    .btn-ghost:hover { color: var(--accent); }
+
+    .hero-visual { position: relative; }
+    .hero-img-wrap { position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 4/3; }
+    .hero-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-img-wrap::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 30%, var(--bg) 100%); pointer-events: none; }
+    .hero-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 120%; height: 120%; background: radial-gradient(ellipse at center, rgba(232,168,56,0.08) 0%, transparent 60%); pointer-events: none; z-index: 0; }
+
+    @media (max-width: 767px) {
+      .hero-visual { order: -1; }
+      .hero-img-wrap { aspect-ratio: 16/9; }
+    }
+
+    /* ─── SECTION SHARED ─── */
+    .section { padding: 80px 0; }
+    @media (min-width: 768px) { .section { padding: 100px 0; } }
+    .section-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+    .section-heading { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 16px; }
+    .section-desc { font-size: 16px; color: var(--text-dim); max-width: 520px; line-height: 1.7; font-weight: 300; }
+
+    /* ─── PROBLEM ─── */
+    .problem-section { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .problem-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 40px; }
+    .problem-pill { padding: 14px 24px; border-radius: 12px; font-size: 14px; font-weight: 500; background: var(--bg-card); border: 1px solid var(--border); color: var(--text-dim); transition: all 0.3s; }
+    .problem-pill:hover { border-color: var(--accent); color: var(--text); }
+
+    /* ─── SOLUTION / PROCESS ─── */
+    .solution-header { margin-bottom: 48px; }
+    .solution-callout { margin-top: 48px; padding: 24px 32px; border-left: 3px solid var(--accent); background: var(--bg-card); border-radius: 0 12px 12px 0; font-family: var(--serif); font-style: italic; font-size: 17px; color: var(--text-dim); line-height: 1.7; }
+    .steps-row { display: grid; gap: 20px; }
+    @media (min-width: 768px) { .steps-row { grid-template-columns: repeat(3, 1fr); } }
+    .step-item { position: relative; padding: 32px; border-radius: 16px; background: var(--bg-card); border: 1px solid var(--border); transition: all 0.4s; overflow: hidden; }
+    .step-item:hover { border-color: rgba(232,168,56,0.3); transform: translateY(-4px); box-shadow: 0 8px 40px rgba(232,168,56,0.06); }
+    .step-num { font-size: 64px; font-weight: 800; color: rgba(232,168,56,0.06); position: absolute; top: 8px; right: 16px; line-height: 1; }
+    .step-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .step-item h3 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+    .step-item p { font-size: 14px; color: var(--text-dim); line-height: 1.6; font-weight: 300; }
+
+    /* ─── ABOUT ─── */
+    .about-section { background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .about-grid { display: grid; gap: 40px; margin-top: 32px; }
+    @media (min-width: 768px) { .about-grid { grid-template-columns: 220px 1fr; gap: 56px; } }
+    .about-photo { width: 180px; height: 220px; border-radius: 16px; overflow: hidden; border: 2px solid var(--border); }
+    @media (min-width: 768px) { .about-photo { width: 220px; height: 270px; } }
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .about-bio { font-size: 15px; color: var(--text-dim); line-height: 1.8; margin-bottom: 24px; font-weight: 300; }
+    .about-creds { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+    .about-cred { padding: 8px 18px; border-radius: 100px; font-size: 12px; font-weight: 600; border: 1px solid var(--border); color: var(--text-dim); transition: all 0.3s; }
+    .about-cred:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+    .about-results-label { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+    .about-results { display: flex; flex-direction: column; gap: 10px; }
+    .about-result { font-size: 14px; color: var(--text-dim); padding: 10px 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 10px; font-weight: 300; }
+    .about-result:last-child { border-bottom: none; }
+    .about-result::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 7px; }
+
+    /* ─── ACCORDION ─── */
+    .accordion-section { border-top: 1px solid var(--border); }
+    .accordion-list { margin-top: 40px; display: flex; flex-direction: column; gap: 4px; }
+    .accordion-item { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: border-color 0.3s; }
+    .accordion-item.open { border-color: rgba(232,168,56,0.3); }
+    .accordion-trigger { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; font-size: 16px; font-weight: 600; color: var(--text); background: var(--bg-card); text-align: left; transition: all 0.3s; }
+    .accordion-trigger:hover { color: var(--accent); }
+    .accordion-item.open .accordion-trigger { color: var(--accent); }
+    .accordion-icon { width: 24px; height: 24px; position: relative; flex-shrink: 0; }
+    .accordion-icon::before, .accordion-icon::after { content: ''; position: absolute; background: currentColor; border-radius: 2px; transition: transform 0.3s; }
+    .accordion-icon::before { width: 14px; height: 2px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+    .accordion-icon::after { width: 2px; height: 14px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+    .accordion-item.open .accordion-icon::after { transform: translate(-50%, -50%) rotate(90deg); }
+    .accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.22,1,0.36,1); }
+    .accordion-inner { padding: 0 24px 24px; }
+    .accordion-desc { font-size: 14px; color: var(--text-dim); line-height: 1.7; font-weight: 300; margin-bottom: 16px; }
+    .accordion-output-label { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .accordion-output-line { font-size: 13px; color: var(--text-dim); padding: 6px 0; display: flex; gap: 8px; font-weight: 300; }
+    .accordion-output-line .tag { font-weight: 700; color: var(--accent); min-width: 70px; font-size: 11px; letter-spacing: 0.05em; flex-shrink: 0; }
+
+    /* ─── TESTIMONIALS ─── */
+    .test-section { border-top: 1px solid var(--border); overflow: hidden; }
+    .test-track { display: flex; gap: 20px; padding: 0 24px 20px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    .test-track::-webkit-scrollbar { display: none; }
+    .test-card { flex-shrink: 0; width: 360px; padding: 32px; border-radius: 16px; background: var(--bg-card); border: 1px solid var(--border); scroll-snap-align: start; display: flex; flex-direction: column; transition: all 0.3s; }
+    .test-card:hover { border-color: rgba(232,168,56,0.3); }
+    .test-quote { font-family: var(--serif); font-style: italic; font-size: 16px; line-height: 1.7; color: var(--text-dim); flex: 1; margin-bottom: 24px; }
+    .test-quote::before { content: '\201C'; display: block; font-size: 48px; line-height: 1; color: var(--accent); margin-bottom: 8px; font-family: var(--serif); }
+    .test-author { display: flex; align-items: center; gap: 12px; padding-top: 20px; border-top: 1px solid var(--border); }
+    .test-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--border); }
+    .test-name { font-size: 14px; font-weight: 700; }
+    .test-role { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+    .test-linkedin { font-size: 11px; color: var(--accent); font-weight: 600; margin-top: 4px; display: inline-flex; align-items: center; gap: 4px; transition: opacity 0.3s; }
+    .test-linkedin:hover { opacity: 0.7; }
+
+    /* ─── FIT CHECK ─── */
+    .fit-section { border-top: 1px solid var(--border); }
+    .fit-grid { display: grid; gap: 20px; margin-top: 48px; }
+    @media (min-width: 768px) { .fit-grid { grid-template-columns: 1fr 1fr; } }
+    .fit-card { padding: 32px; border-radius: 16px; border: 1px solid var(--border); }
+    .fit-card.yes { background: var(--bg-card); }
+    .fit-card.no { background: transparent; }
+    .fit-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px; padding: 6px 14px; border-radius: 100px; }
+    .fit-card.yes .fit-badge { background: rgba(16,185,129,0.1); color: #34d399; }
+    .fit-card.no .fit-badge { background: rgba(107,116,147,0.1); color: var(--text-dim); }
+    .fit-list { list-style: none; }
+    .fit-list li { padding: 8px 0; font-size: 15px; display: flex; align-items: center; gap: 10px; font-weight: 300; }
+    .fit-card.yes .fit-list li { color: var(--text-dim); }
+    .fit-card.no .fit-list li { color: var(--text-dim); opacity: 0.6; }
+    .fit-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+    .fit-card.yes .fit-dot { background: #34d399; }
+    .fit-card.no .fit-dot { background: var(--text-dim); }
+
+    /* ─── PRICING ─── */
+    .pricing-section { background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+    .pricing-section::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(232,168,56,0.08) 0%, transparent 70%); pointer-events: none; }
+    .pricing-center { text-align: center; max-width: 560px; margin: 0 auto; position: relative; z-index: 1; }
+    .pricing-amount { font-size: clamp(3.5rem, 9vw, 5.5rem); font-weight: 800; color: #fff; letter-spacing: -0.03em; margin: 16px 0 8px; }
+    .pricing-period { font-size: 18px; color: var(--text-dim); font-weight: 300; }
+    .pricing-features { list-style: none; text-align: left; max-width: 440px; margin: 40px auto; display: flex; flex-direction: column; gap: 14px; }
+    .pricing-features li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--text-dim); font-weight: 300; }
+    .pricing-features li::before { content: ''; width: 8px; height: 8px; border-radius: 50%; border: 2px solid var(--accent); flex-shrink: 0; margin-top: 6px; }
+    .pricing-note { font-size: 13px; color: var(--text-dim); margin-top: 24px; font-weight: 300; max-width: 420px; margin-left: auto; margin-right: auto; line-height: 1.7; font-family: var(--serif); font-style: italic; }
+
+    /* ─── CONTACT ─── */
+    .contact-section { border-top: 1px solid var(--border); }
+    .contact-grid { display: grid; gap: 48px; margin-top: 48px; }
+    @media (min-width: 768px) { .contact-grid { grid-template-columns: 1fr 1fr; gap: 64px; } }
+    .contact-info p { font-size: 16px; color: var(--text-dim); margin-bottom: 32px; line-height: 1.7; font-weight: 300; font-family: var(--serif); font-style: italic; }
+    .contact-links { display: flex; flex-direction: column; gap: 12px; }
+    .c-link { display: flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 500; color: var(--text-dim); transition: all 0.3s; padding: 14px 18px; border-radius: 12px; border: 1px solid var(--border); }
+    .c-link:hover { color: var(--accent); border-color: rgba(232,168,56,0.3); background: var(--accent-dim); }
+    .c-link svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+    .cf-row { display: grid; gap: 16px; }
+    @media (min-width: 480px) { .cf-row { grid-template-columns: 1fr 1fr; } }
+    .cf-field { display: flex; flex-direction: column; gap: 6px; }
+    .cf-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); }
+    .cf-input, .cf-textarea { background: var(--bg); border: 1px solid var(--border); padding: 14px 18px; font-size: 15px; border-radius: 10px; color: var(--text); outline: none; transition: all 0.3s; font-family: 'Outfit', sans-serif; font-weight: 300; }
+    .cf-input::placeholder, .cf-textarea::placeholder { color: #3d4265; }
+    .cf-input:focus, .cf-textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim); }
+    .cf-textarea { min-height: 100px; resize: vertical; }
+    .cf-submit { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 18px 36px; background: var(--accent); color: var(--bg); font-weight: 700; font-size: 15px; border-radius: 100px; border: none; cursor: pointer; transition: all 0.3s; font-family: 'Outfit', sans-serif; }
+    .cf-submit:hover { box-shadow: 0 0 48px rgba(232,168,56,0.3); transform: translateY(-2px); }
+    .cf-submit:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+
+    /* ─── FOOTER ─── */
+    .footer { padding: 40px 0; text-align: center; border-top: 1px solid var(--border); }
+    .footer-podcast { font-size: 14px; color: var(--text-dim); margin-bottom: 8px; font-weight: 300; }
+    .footer-link { font-size: 14px; font-weight: 600; color: var(--accent); transition: opacity 0.3s; }
+    .footer-link:hover { opacity: 0.7; }
+
+    /* ─── TOAST ─── */
+    .toast { position: fixed; bottom: 24px; right: 24px; z-index: 200; padding: 16px 28px; border-radius: 12px; font-size: 14px; font-weight: 500; transform: translateY(120%); transition: transform 0.4s cubic-bezier(0.22,1,0.36,1); backdrop-filter: blur(12px); }
+    .toast.show { transform: translateY(0); }
+    .toast.success { background: rgba(232,168,56,0.95); color: var(--bg); }
+    .toast.error { background: rgba(220,38,38,0.95); color: #fff; }
+
+    /* ─── ANIMATIONS ─── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 100ms; }
+    .reveal-d2 { transition-delay: 200ms; }
+    .reveal-d3 { transition-delay: 300ms; }
+    .reveal-d4 { transition-delay: 400ms; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="#hero" class="nav-name">Etgar <span>.</span></a>
+      <a href="#contact" class="nav-cta">Book a Call</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <div class="hero-eyebrow reveal">Etgar Shpivak</div>
+          <h1 class="reveal reveal-d1">
+            <span class="line">Too much noise.</span>
+            <span class="line line-dim">Not enough growth.</span>
+            <span class="line line-accent">Let's fix that.</span>
+          </h1>
+          <p class="hero-sub reveal reveal-d2">Weekly Go-To-Market advisory for startup founders who need decisions, not meetings.</p>
+          <div class="hero-tags reveal reveal-d2">
+            <span class="hero-tag">Vertical SaaS</span>
+            <span class="hero-tag">eCommerce</span>
+            <span class="hero-tag">B2C / D2C</span>
+            <span class="hero-tag">Fintech</span>
+            <span class="hero-tag">AdTech / MarTech</span>
+          </div>
+          <div class="hero-actions reveal reveal-d3">
+            <a href="#contact" class="btn-primary">
+              Book a Free Discovery Call
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+            <a href="#problem" class="btn-ghost">Learn More ↓</a>
+          </div>
+          <p class="hero-micro reveal reveal-d4">30 min. No pitch. Just your real challenges.</p>
+        </div>
+        <div class="hero-visual reveal reveal-d2">
+          <div class="hero-glow"></div>
+          <div class="hero-img-wrap">
+            <img src="assets/generated/hero-trajectory.jpg" alt="Growth trajectory visualization" loading="eager">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="section problem-section" id="problem">
+    <div class="container">
+      <div class="section-eyebrow reveal">The Problem</div>
+      <h2 class="section-heading reveal" style="max-width: 640px;">You don't have a strategy problem. You have too many answers and not enough clarity.</h2>
+      <div class="problem-pills">
+        <div class="problem-pill reveal reveal-d1">Executing but the needle isn't moving</div>
+        <div class="problem-pill reveal reveal-d2">GTM plan exists. Nobody follows it</div>
+        <div class="problem-pill reveal reveal-d3">Every week is a new fire drill</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section class="section" id="solution">
+    <div class="container">
+      <div class="solution-header">
+        <div class="section-eyebrow reveal">The Solution</div>
+        <h3 class="section-heading reveal">Real decisions. Not another meeting.</h3>
+        <p class="section-desc reveal">Stop optimizing everything. Double down on what works.</p>
+      </div>
+      <div class="steps-row">
+        <div class="step-item reveal">
+          <div class="step-num">01</div>
+          <div class="step-tag">Prep (Me)</div>
+          <h3>Prep</h3>
+          <p>I review everything before we meet. No cold starts.</p>
+        </div>
+        <div class="step-item reveal reveal-d1">
+          <div class="step-num">02</div>
+          <div class="step-tag">Session (Us)</div>
+          <h3>Session</h3>
+          <p>60 min. We make decisions, not conversation.</p>
+        </div>
+        <div class="step-item reveal reveal-d2">
+          <div class="step-num">03</div>
+          <div class="step-tag">Execute (You)</div>
+          <h3>Execute</h3>
+          <p>A prioritized task list. Reviewed next session.</p>
+        </div>
+      </div>
+      <div class="solution-callout reveal">
+        Your one hour is the output of my preparation — not the other way around.
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section about-section" id="about">
+    <div class="container">
+      <div class="section-eyebrow reveal">Why Me</div>
+      <h2 class="section-heading reveal">I've been the founder in that room.</h2>
+      <div class="about-grid">
+        <div class="about-photo reveal">
+          <img src="src/assets/etgar-portrait.jpg" alt="Etgar Shpivak" loading="lazy">
+        </div>
+        <div class="reveal reveal-d1">
+          <p class="about-bio">Not a consultant who read about it. I built Fixel from zero to hundreds of paying clients — AutoTrader, Purple, Globo — hired wrong, ran low on runway, pivoted, and exited. I've been both the founder and the marketer. I see what you can't, because I'm not inside it.</p>
+          <div class="about-creds">
+            <span class="about-cred">Built & sold a startup</span>
+            <span class="about-cred">15+ years hands-on</span>
+            <span class="about-cred">Top 25 in paid advertising</span>
+          </div>
+          <div class="about-results-label">Results</div>
+          <div class="about-results">
+            <div class="about-result">Mentored a founder from early product to acquisition</div>
+            <div class="about-result">Built initial sales infrastructure for US market entry</div>
+            <div class="about-result">Helped a FinTech refocus ICP — LTV up 50%, CAC down 30%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE WORK ON — ACCORDION -->
+  <section class="section accordion-section" id="work">
+    <div class="container">
+      <div class="section-eyebrow reveal">What We Work On</div>
+      <h2 class="section-heading reveal">Real sessions. Real output.</h2>
+      <div class="accordion-list reveal">
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            Hidden Opportunities
+            <span class="accordion-icon"></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-inner">
+              <p class="accordion-desc">I find what's already working — the segment nobody's scaling, the channel quietly profitable. Same budget, better numbers.</p>
+              <div class="accordion-output-label">Session Output</div>
+              <div class="accordion-output-line"><span class="tag">FOUND</span> Profitable segment — never targeted</div>
+              <div class="accordion-output-line"><span class="tag">FOUND</span> Top-converting message — never scaled</div>
+              <div class="accordion-output-line"><span class="tag">RESULT</span> Same budget. Better numbers.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            Campaign Analysis
+            <span class="accordion-icon"></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-inner">
+              <p class="accordion-desc">Line by line — creative, audience, offer, landing page. You leave with a kill/fix/scale list.</p>
+              <div class="accordion-output-label">Session Output</div>
+              <div class="accordion-output-line"><span class="tag">MEASURED</span> CRM &rarr; Meta & Google via Offline Conversions</div>
+              <div class="accordion-output-line"><span class="tag">SHIFTED</span> Optimization leads &rarr; qualified opps</div>
+              <div class="accordion-output-line"><span class="tag">RESULT</span> CPL flat. SQL rate up 40%</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            Homepage Messaging
+            <span class="accordion-icon"></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-inner">
+              <p class="accordion-desc">We find the real value prop and rewrite headline, subhead, and CTA. Live, together.</p>
+              <div class="accordion-output-label">Session Output</div>
+              <div class="accordion-output-line"><span class="tag">BEFORE</span> "The all-in-one platform for service teams"</div>
+              <div class="accordion-output-line"><span class="tag">AFTER</span> "Your team closes tickets faster."</div>
+              <div class="accordion-output-line"><span class="tag">CTA</span> "Get started" &rarr; "See a 3-min demo"</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            GTM Planning
+            <span class="accordion-icon"></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-inner">
+              <p class="accordion-desc">Positioning, sequencing, channels. 30-day milestones. Who does what.</p>
+              <div class="accordion-output-label">Session Output</div>
+              <div class="accordion-output-line"><span class="tag">WK 1</span> ICP list — 50 named accounts</div>
+              <div class="accordion-output-line"><span class="tag">WK 2</span> Cold outbound live</div>
+              <div class="accordion-output-line"><span class="tag">WK 3</span> First 5 discovery calls</div>
+              <div class="accordion-output-line"><span class="tag">WK 4</span> Retro + iterate on data</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            Budget Allocation
+            <span class="accordion-icon"></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-inner">
+              <p class="accordion-desc">Based on your stage and data — you leave knowing exactly where the money goes and why.</p>
+              <div class="accordion-output-label">Session Output</div>
+              <div class="accordion-output-line"><span class="tag">SEPARATED</span> Brand vs. performance</div>
+              <div class="accordion-output-line"><span class="tag">FOUND</span> ~35% conversions were brand searches</div>
+              <div class="accordion-output-line"><span class="tag">RESULT</span> Reallocated to real incremental channels</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            ICP Definition
+            <span class="accordion-icon"></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-inner">
+              <p class="accordion-desc">We get specific. Until your ICP is a person, not a category.</p>
+              <div class="accordion-output-label">Session Output</div>
+              <div class="accordion-output-line"><span class="tag">MAPPED</span> ~50K addressable accounts globally</div>
+              <div class="accordion-output-line"><span class="tag">SWITCHED</span> Lead-gen &rarr; thought leadership</div>
+              <div class="accordion-output-line"><span class="tag">RESULT</span> Inbound leads arrived organically</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            Landing Page CRO
+            <span class="accordion-icon"></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-inner">
+              <p class="accordion-desc">We go through the page like a skeptical visitor. I tell you what to fix first.</p>
+              <div class="accordion-output-label">Session Output</div>
+              <div class="accordion-output-line"><span class="tag">FIX 1</span> Social proof above the fold</div>
+              <div class="accordion-output-line"><span class="tag">FIX 2</span> Remove 3 form fields</div>
+              <div class="accordion-output-line"><span class="tag">FIX 3</span> CTA &rarr; "See a 3-min demo"</div>
+              <div class="accordion-output-line"><span class="tag">RESULT</span> Conversion rate up 2.1x</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- IS THIS FOR YOU -->
+  <section class="section fit-section" id="fit">
+    <div class="container">
+      <div class="section-eyebrow reveal">Is This For You</div>
+      <h2 class="section-heading reveal">The right fit matters.</h2>
+      <div class="fit-grid">
+        <div class="fit-card yes reveal">
+          <div class="fit-badge">For you if</div>
+          <ul class="fit-list">
+            <li><span class="fit-dot"></span>Seed or Series A, bootstrapped or funded</li>
+            <li><span class="fit-dot"></span>B2B SaaS, eCommerce, Fintech, or similar</li>
+            <li><span class="fit-dot"></span>Already talking to customers</li>
+            <li><span class="fit-dot"></span>You want direct feedback, no sugarcoating</li>
+          </ul>
+        </div>
+        <div class="fit-card no reveal reveal-d1">
+          <div class="fit-badge">Not for you if</div>
+          <ul class="fit-list">
+            <li><span class="fit-dot"></span>No real customers yet</li>
+            <li><span class="fit-dot"></span>Looking for validation, not direction</li>
+            <li><span class="fit-dot"></span>Want polished decks and soft feedback</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section test-section" id="testimonials">
+    <div class="container">
+      <div class="section-eyebrow reveal">Testimonials</div>
+      <h2 class="section-heading reveal" style="margin-bottom: 40px;">People I've worked with.</h2>
+    </div>
+    <div class="test-track">
+      <div class="test-card">
+        <p class="test-quote">Etgar understands how technology changes what's possible in marketing — and makes it practical for startups at any stage. Founders who work with him stop guessing and start executing.</p>
+        <div class="test-author">
+          <img src="src/assets/testimonials/sean-simon.jpg" alt="Sean Simon" class="test-avatar" loading="lazy">
+          <div>
+            <div class="test-name">Sean Simon</div>
+            <div class="test-role">ex VP Sales, Criteo & PebblePost</div>
+            <a href="https://www.linkedin.com/in/seansimon/" target="_blank" rel="noopener noreferrer" class="test-linkedin">LinkedIn ↗</a>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <p class="test-quote">A great product needs a great go-to-market. Etgar is one of the few professionals I recommend founders work with. He's been in the room as a builder, not just an advisor.</p>
+        <div class="test-author">
+          <img src="src/assets/testimonials/daniel-ziv.jpg" alt="Daniel Ziv" class="test-avatar" loading="lazy">
+          <div>
+            <div class="test-name">Daniel Ziv</div>
+            <div class="test-role">Investment Manager, Glilot Capital</div>
+            <a href="https://www.linkedin.com/in/danielziv/" target="_blank" rel="noopener noreferrer" class="test-linkedin">LinkedIn ↗</a>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <p class="test-quote">The rare advisor who does the homework before the meeting, comes with specifics, and leaves you with a clear action plan every single time.</p>
+        <div class="test-author">
+          <img src="src/assets/testimonials/bryan-kujawski.png" alt="Bryan Kujawski" class="test-avatar" loading="lazy">
+          <div>
+            <div class="test-name">Bryan Kujawski</div>
+            <div class="test-role">Co-Founder & Board Member</div>
+            <a href="https://www.linkedin.com/in/bryan-kujawski-69b649/" target="_blank" rel="noopener noreferrer" class="test-linkedin">LinkedIn ↗</a>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <p class="test-quote">His weekly sessions are the most productive hour of my week. Direct, focused, and always resulting in a prioritized roadmap we can execute immediately.</p>
+        <div class="test-author">
+          <img src="src/assets/testimonials/guy-kohn.jpg" alt="Guy Kohn" class="test-avatar" loading="lazy">
+          <div>
+            <div class="test-name">Guy Kohn</div>
+            <div class="test-role">Founder & CEO, InsurTax</div>
+            <a href="https://www.linkedin.com/in/gkohn/" target="_blank" rel="noopener noreferrer" class="test-linkedin">LinkedIn ↗</a>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <p class="test-quote">Etgar strips away distractions and hands you a clear point of view. He was instrumental in our journey from Techstars to acquisition.</p>
+        <div class="test-author">
+          <img src="src/assets/testimonials/julien-jukema.jpg" alt="Julien Jukema" class="test-avatar" loading="lazy">
+          <div>
+            <div class="test-name">Julien Jukema</div>
+            <div class="test-role">Founder & CEO, Anywyse</div>
+            <a href="https://www.linkedin.com/in/julien-jukema-8b1aa7114/" target="_blank" rel="noopener noreferrer" class="test-linkedin">LinkedIn ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section pricing-section" id="pricing">
+    <div class="container">
+      <div class="pricing-center">
+        <div class="section-eyebrow reveal">Pricing</div>
+        <div class="pricing-amount reveal reveal-d1">$2,500</div>
+        <div class="pricing-period reveal reveal-d1">per month</div>
+        <ul class="pricing-features reveal reveal-d2">
+          <li>Weekly 60-min session — prepared in advance, focused on decisions</li>
+          <li>Pre-session deep dive — I review your data before we meet</li>
+          <li>Clear action list after every session</li>
+          <li>No long-term commitment — cancel anytime</li>
+        </ul>
+        <div class="reveal reveal-d3" style="margin-top: 40px;">
+          <a href="#contact" class="btn-primary">
+            Book a Free Discovery Call
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+        <p class="pricing-note reveal reveal-d3">Between sessions, I'm reachable for critical decisions. First session finds the gaps — every session after builds momentum.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <div class="section-eyebrow reveal">Contact</div>
+      <h2 class="section-heading reveal">Let's talk.</h2>
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <p>30 minutes. No pitch. Just whether this makes sense for you.</p>
+          <div class="contact-links">
+            <a href="https://wa.me/972546628825" target="_blank" rel="noopener noreferrer" class="c-link">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+              Chat on WhatsApp
+            </a>
+            <a href="https://www.linkedin.com/in/etgar/" target="_blank" rel="noopener noreferrer" class="c-link">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+              Connect on LinkedIn
+            </a>
+          </div>
+        </div>
+        <form class="contact-form reveal reveal-d1" id="cf">
+          <div class="cf-row">
+            <div class="cf-field">
+              <label class="cf-label" for="name">Name *</label>
+              <input class="cf-input" type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+            <div class="cf-field">
+              <label class="cf-label" for="email">Email *</label>
+              <input class="cf-input" type="email" id="email" name="email" placeholder="your@email.com" required>
+            </div>
+          </div>
+          <div class="cf-field">
+            <label class="cf-label" for="company">Company</label>
+            <input class="cf-input" type="text" id="company" name="company" placeholder="Your startup">
+          </div>
+          <div class="cf-field">
+            <label class="cf-label" for="message">Message *</label>
+            <textarea class="cf-textarea" id="message" name="message" placeholder="Tell me about your startup and your biggest challenge right now..." required></textarea>
+          </div>
+          <button type="submit" class="cf-submit" id="sb">Book a Free Discovery Call &rarr;</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-podcast">Weekly podcast on founders & marketing</p>
+      <a href="https://open.spotify.com/show/6vBCY3fsfJu41nq5LQNsDe" target="_blank" rel="noopener noreferrer" class="footer-link">Founders' Marketing Compass on Spotify ↗</a>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // Reveal on scroll
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // Nav shrink on scroll
+    window.addEventListener('scroll', () => {
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // Accordion
+    document.querySelectorAll('.accordion-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const body = item.querySelector('.accordion-body');
+        const isOpen = item.classList.contains('open');
+
+        // Close all
+        document.querySelectorAll('.accordion-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'false');
+          i.querySelector('.accordion-body').style.maxHeight = '0';
+        });
+
+        // Open clicked if was closed
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+          body.style.maxHeight = body.scrollHeight + 'px';
+        }
+      });
+    });
+
+    // Toast
+    function showToast(msg, type) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.className = 'toast ' + type + ' show';
+      setTimeout(() => t.classList.remove('show'), 4000);
+    }
+
+    // Form
+    document.getElementById('cf').addEventListener('submit', async e => {
+      e.preventDefault();
+      const btn = document.getElementById('sb'), f = e.target;
+      const d = {
+        name: f.name.value,
+        email: f.email.value,
+        company: f.company.value,
+        message: f.message.value,
+        timestamp: new Date().toISOString(),
+        source: 'shpivak.co.il/advisory-v5'
+      };
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      try {
+        const r = await fetch('https://hook.eu2.make.com/fxekjjkmu9ktxrpv2u9gb6c9n8x5iqys', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(d)
+        });
+        if (r.ok) {
+          showToast("Sent! I'll get back to you within 24 hours.", 'success');
+          f.reset();
+        } else throw 0;
+      } catch {
+        showToast('Failed to send. Try WhatsApp instead.', 'error');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Book a Free Discovery Call \u2192';
+      }
+    });
+  </script>
+</body>
+</html>
