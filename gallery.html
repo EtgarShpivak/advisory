@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTM Advisory — Landing Page Variants</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0f;
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            padding: 60px 24px 40px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .header h1 {
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #d4a04a, #e8a838, #f0c060);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+        }
+
+        .header p {
+            font-size: 1.05rem;
+            color: #888;
+            line-height: 1.6;
+        }
+
+        .header .instruction {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #666;
+            padding: 12px 20px;
+            border: 1px solid #222;
+            border-radius: 8px;
+            background: #111;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 24px;
+            padding: 0 24px 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: #141419;
+            border: 1px solid #222;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: #d4a04a;
+            box-shadow: 0 12px 40px rgba(212, 160, 74, 0.1);
+        }
+
+        .card-preview {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            background: #0a0a0a;
+        }
+
+        .card-preview iframe {
+            width: 1280px;
+            height: 800px;
+            border: none;
+            transform-origin: top left;
+            transform: scale(0.265625);
+            pointer-events: none;
+        }
+
+        .card-preview .overlay {
+            position: absolute;
+            inset: 0;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .card-info {
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .card-info .left {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .card-number {
+            font-size: 0.75rem;
+            color: #d4a04a;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #e0e0e0;
+        }
+
+        .card-tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            background: #1a1a22;
+            color: #888;
+            border: 1px solid #2a2a33;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-view {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: #d4a04a;
+            color: #000;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+
+        .btn-view:hover {
+            background: #e8b85a;
+        }
+
+        .vote-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 8px 14px;
+            background: transparent;
+            color: #888;
+            border: 1px solid #333;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .vote-btn:hover {
+            border-color: #d4a04a;
+            color: #d4a04a;
+        }
+
+        .vote-btn.voted {
+            background: rgba(212, 160, 74, 0.15);
+            border-color: #d4a04a;
+            color: #d4a04a;
+        }
+
+        .vote-btn .count {
+            font-weight: 600;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 24px;
+            color: #444;
+            font-size: 0.85rem;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            .header { padding: 40px 16px 30px; }
+            .grid { grid-template-columns: 1fr; padding: 0 16px 40px; gap: 16px; }
+            .card-info { flex-direction: column; align-items: flex-start; }
+            .card-actions { width: 100%; }
+            .btn-view { flex: 1; justify-content: center; }
+            .vote-btn { flex: 1; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>GTM Advisory — Landing Page Variants</h1>
+        <p>11 different designs for the same service. Click any variant to see it full-screen. Which one do you like best?</p>
+        <div class="instruction">💡 Click the ❤️ button on your favorite(s) — results are saved locally so you can share your picks with me</div>
+    </div>
+
+    <div class="grid" id="gallery"></div>
+
+    <div class="footer">
+        Built by Etgar Shpivak • Powered by Claude
+    </div>
+
+    <script>
+        const pages = [
+            { file: 'index.html', num: '01', title: 'Original', tags: ['Dark', 'Serif', 'Elegant'] },
+            { file: 'index2.html', num: '02', title: 'Clean Modern', tags: ['Light', 'Tabs', 'Minimal'] },
+            { file: 'index3.html', num: '03', title: 'Brutalist Dark', tags: ['Dark', 'Mono', 'Accordion', 'Bento'] },
+            { file: 'index4.html', num: '04', title: 'Luxury Minimal', tags: ['Warm', 'Serif', 'Tabs'] },
+            { file: 'index5.html', num: '05', title: 'Dark Editorial', tags: ['Dark', 'Gold', 'AI Images'] },
+            { file: 'index6.html', num: '06', title: 'Glassmorphic Blue', tags: ['Dark', 'Glass', '7 Tabs', 'AI Images'] },
+            { file: 'index7.html', num: '07', title: 'Warm Organic', tags: ['Light', 'Terracotta', 'AI Images'] },
+            { file: 'index8.html', num: '08', title: 'Cinematic Scroll', tags: ['Dark', 'Snap Scroll', 'Nav Dots'] },
+            { file: 'index9.html', num: '09', title: 'Synthwave Neon', tags: ['Dark', 'Retro', 'Typing FX'] },
+            { file: 'index10.html', num: '10', title: 'Editorial Magazine', tags: ['Light', 'Drop Caps', 'Newspaper'] },
+            { file: 'index11.html', num: '11', title: 'Glassmorphic 3D', tags: ['Dark', '3D Tilt', 'Mesh Gradient'] }
+        ];
+
+        // Load votes from localStorage
+        const votes = JSON.parse(localStorage.getItem('advisory-votes') || '{}');
+
+        const gallery = document.getElementById('gallery');
+
+        pages.forEach(page => {
+            const isVoted = votes[page.file] || false;
+
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <div class="card-preview">
+                    <iframe src="${page.file}" loading="lazy" sandbox="allow-same-origin" title="Preview of ${page.title}"></iframe>
+                    <a class="overlay" href="${page.file}" target="_blank" title="Open ${page.title} full-screen"></a>
+                </div>
+                <div class="card-info">
+                    <div class="left">
+                        <div class="card-number">VARIANT ${page.num}</div>
+                        <div class="card-title">${page.title}</div>
+                        <div class="card-tags">
+                            ${page.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <a class="btn-view" href="${page.file}" target="_blank">View ↗</a>
+                        <button class="vote-btn ${isVoted ? 'voted' : ''}" data-file="${page.file}">
+                            ❤️ <span class="count">${isVoted ? '1' : '0'}</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+            gallery.appendChild(card);
+        });
+
+        // Vote handler
+        gallery.addEventListener('click', (e) => {
+            const btn = e.target.closest('.vote-btn');
+            if (!btn) return;
+
+            const file = btn.dataset.file;
+            const isVoted = votes[file] || false;
+
+            if (isVoted) {
+                delete votes[file];
+                btn.classList.remove('voted');
+                btn.querySelector('.count').textContent = '0';
+            } else {
+                votes[file] = true;
+                btn.classList.add('voted');
+                btn.querySelector('.count').textContent = '1';
+            }
+
+            localStorage.setItem('advisory-votes', JSON.stringify(votes));
+        });
+    </script>
+</body>
+</html>
