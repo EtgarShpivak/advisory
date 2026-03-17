@@ -48,6 +48,14 @@
   }
   </script>
 
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-58R3H623');</script>
+  <!-- End Google Tag Manager -->
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1033,6 +1041,10 @@
   </style>
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-58R3H623"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
   <!-- ━━━ HERO ━━━ -->
   <section class="hero" id="hero">
@@ -1842,7 +1854,88 @@
       }, 4500);
     })();
 
-    // Form
+    // ━━━ dataLayer events ━━━
+    window.dataLayer = window.dataLayer || [];
+
+    // 1. Page view (virtual — supplements GTM's built-in pageview)
+    dataLayer.push({ event: 'page_view', page_title: document.title, page_location: location.href });
+
+    // 2. Section scroll tracking via IntersectionObserver
+    const sectionIds = ['hero','problem','solution','about','testimonials','workon','pricing','contact','content'];
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          dataLayer.push({ event: 'section_view', section_id: entry.target.id, section_name: entry.target.querySelector('h2,.section-title')?.textContent?.trim() || entry.target.id });
+          sectionObserver.unobserve(entry.target); // fire once per section per session
+        }
+      });
+    }, { threshold: 0.3 });
+    sectionIds.forEach(id => { const el = document.getElementById(id); if (el) sectionObserver.observe(el); });
+
+    // 3. CTA click tracking — "Book a Free Discovery Call" + "Learn More" + "Get Started"
+    document.querySelectorAll('a[href="#contact"], a[href="#about"]').forEach(link => {
+      link.addEventListener('click', () => {
+        dataLayer.push({ event: 'cta_click', cta_text: link.textContent.trim(), cta_destination: link.getAttribute('href'), cta_location: link.closest('section')?.id || 'sticky' });
+      });
+    });
+
+    // 4. WhatsApp click
+    document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+      link.addEventListener('click', () => {
+        dataLayer.push({ event: 'whatsapp_click', link_url: link.href, click_location: link.closest('section')?.id || 'unknown' });
+      });
+    });
+
+    // 5. LinkedIn click
+    document.querySelectorAll('a[href*="linkedin.com"]').forEach(link => {
+      link.addEventListener('click', () => {
+        dataLayer.push({ event: 'linkedin_click', link_url: link.href });
+      });
+    });
+
+    // 6. Content / media card clicks
+    document.querySelectorAll('.media-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const title = card.querySelector('.media-title')?.textContent?.trim() || '';
+        const source = card.querySelector('.media-source')?.textContent?.trim() || '';
+        const type = card.querySelector('.media-type-badge')?.textContent?.trim() || '';
+        dataLayer.push({ event: 'content_click', content_title: title, content_source: source, content_type: type, content_url: card.href });
+      });
+    });
+
+    // 7. Podcast link clicks (Spotify / YouTube)
+    document.querySelectorAll('.podcast-link').forEach(link => {
+      link.addEventListener('click', () => {
+        const platform = link.classList.contains('spotify') ? 'Spotify' : 'YouTube';
+        dataLayer.push({ event: 'podcast_click', podcast_platform: platform, link_url: link.href });
+      });
+    });
+
+    // 8. Accordion (FAQ/service) opens
+    document.querySelectorAll('.acc-header').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const cat = btn.querySelector('.acc-cat')?.textContent?.trim() || '';
+        const title = btn.querySelector('.acc-title')?.textContent?.trim() || '';
+        dataLayer.push({ event: 'accordion_open', accordion_category: cat, accordion_title: title });
+      });
+    });
+
+    // 9. Scroll depth milestones (25%, 50%, 75%, 100%)
+    (function() {
+      const milestones = [25, 50, 75, 100];
+      const fired = {};
+      window.addEventListener('scroll', () => {
+        const scrollPct = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+        milestones.forEach(m => {
+          if (scrollPct >= m && !fired[m]) {
+            fired[m] = true;
+            dataLayer.push({ event: 'scroll_depth', scroll_percentage: m });
+          }
+        });
+      }, { passive: true });
+    })();
+
+    // Form — with lead event
     document.getElementById('cf').addEventListener('submit', async e => {
       e.preventDefault();
       const btn = document.getElementById('sb');
@@ -1851,7 +1944,11 @@
       btn.disabled = true; btn.textContent = 'Sending...';
       try {
         const r = await fetch('https://hook.eu2.make.com/fxekjjkmu9ktxrpv2u9gb6c9n8x5iqys', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(d) });
-        if (r.ok) { showToast("Message sent! I'll get back to you within 24 hours.", 'success'); f.reset(); } else throw 0;
+        if (r.ok) {
+          // 10. Lead event — fires on successful form submission
+          dataLayer.push({ event: 'generate_lead', lead_source: 'contact_form', contact_name: d.name, contact_email: d.email, currency: 'USD', value: 2500 });
+          showToast("Message sent! I'll get back to you within 24 hours.", 'success'); f.reset();
+        } else throw 0;
       } catch { showToast('Failed to send. Try WhatsApp instead.', 'error'); }
       finally { btn.disabled = false; btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>Book a Free Discovery Call'; }
     });
