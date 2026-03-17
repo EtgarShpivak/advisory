@@ -1864,6 +1864,36 @@
       }, 4500);
     })();
 
+    // ━━━ UTM & Referrer capture (first-party cookies) ━━━
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const utmKeys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+      const hasUtm = utmKeys.some(k => params.has(k));
+      if (hasUtm) {
+        const utmData = {};
+        utmKeys.forEach(k => { if (params.get(k)) utmData[k] = params.get(k); });
+        utmData.landing_page = window.location.pathname;
+        utmData.timestamp = new Date().toISOString();
+        document.cookie = '_adv_utm=' + encodeURIComponent(JSON.stringify(utmData)) + ';max-age=7776000;path=/;SameSite=Lax';
+      }
+      const ref = document.referrer;
+      if (ref && !ref.includes(window.location.hostname)) {
+        document.cookie = '_adv_ref=' + encodeURIComponent(ref) + ';max-age=7776000;path=/;SameSite=Lax';
+      }
+    })();
+
+    function getUtmCookies() {
+      const cookies = document.cookie.split(';').reduce((acc, c) => {
+        const [k, ...v] = c.trim().split('=');
+        acc[k] = v.join('=');
+        return acc;
+      }, {});
+      let utm = {};
+      try { utm = JSON.parse(decodeURIComponent(cookies._adv_utm || '{}')); } catch {}
+      const referrer = decodeURIComponent(cookies._adv_ref || '');
+      return { ...utm, referrer };
+    }
+
     // ━━━ dataLayer events ━━━
     window.dataLayer = window.dataLayer || [];
 
@@ -1950,7 +1980,23 @@
       e.preventDefault();
       const btn = document.getElementById('sb');
       const f = e.target;
-      const d = { name: f.name.value, email: f.email.value, message: f.message.value, timestamp: new Date().toISOString(), source: 'advisory.shpivak.co.il' };
+      const attribution = getUtmCookies();
+      const d = {
+        name: f.name.value,
+        email: f.email.value,
+        company: f.company.value || '',
+        message: f.message.value || '',
+        timestamp: new Date().toISOString(),
+        source: 'advisory.shpivak.co.il',
+        utm_source: attribution.utm_source || '',
+        utm_medium: attribution.utm_medium || '',
+        utm_campaign: attribution.utm_campaign || '',
+        utm_content: attribution.utm_content || '',
+        utm_term: attribution.utm_term || '',
+        referrer: attribution.referrer || '',
+        landing_page: attribution.landing_page || window.location.pathname,
+        page_url: window.location.href
+      };
       btn.disabled = true; btn.textContent = 'Sending...';
       try {
         const r = await fetch('https://hook.eu2.make.com/fxekjjkmu9ktxrpv2u9gb6c9n8x5iqys', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(d) });
