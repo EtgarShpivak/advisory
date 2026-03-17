@@ -115,11 +115,11 @@
        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     .hero {
       position: relative;
-      min-height: 100vh;
       display: flex;
       align-items: center;
       background: var(--navy);
       overflow: hidden;
+      padding: clamp(100px, 15vh, 160px) 0 clamp(60px, 8vh, 100px);
     }
     .hero-img {
       position: absolute;
@@ -304,13 +304,13 @@
     .about-top {
       display: flex;
       flex-direction: column;
-      gap: 32px;
-      margin-bottom: 56px;
+      gap: 24px;
+      margin-bottom: 40px;
     }
-    @media (min-width: 768px) { .about-top { flex-direction: row; gap: 48px; align-items: flex-start; } }
+    @media (min-width: 768px) { .about-top { flex-direction: row; gap: 40px; align-items: flex-start; } }
     .about-photo {
-      width: 140px;
-      height: 140px;
+      width: 120px;
+      height: 120px;
       border-radius: 20px;
       overflow: hidden;
       flex-shrink: 0;
@@ -321,31 +321,50 @@
       font-family: var(--serif);
       font-size: clamp(1.75rem, 4vw, 2.75rem);
       font-weight: 400;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       line-height: 1.15;
     }
-    .about-bio { font-size: 17px; line-height: 1.75; color: #52525b; max-width: 560px; }
-    .stats-strip {
+    .about-bio { font-size: 16px; line-height: 1.7; color: #52525b; max-width: 540px; }
+
+    /* Credential cards */
+    .cred-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      margin-bottom: 40px;
+      margin-bottom: 32px;
     }
-    .stat {
-      text-align: center;
-      padding: 24px 16px;
+    @media (min-width: 640px) { .cred-grid { grid-template-columns: 1fr 1fr; } }
+    .cred-card {
+      padding: 24px;
       border-radius: 16px;
       background: #fff;
       border: 1px solid var(--border-light);
+      transition: border-color 0.3s;
     }
-    .stat-num { font-family: var(--serif); font-size: clamp(1.5rem, 3vw, 2.25rem); color: var(--gold); margin-bottom: 4px; }
-    .stat-label { font-size: 13px; color: var(--muted-dark); font-weight: 500; }
+    .cred-card:hover { border-color: rgba(201,168,76,0.3); }
+    .cred-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      font-size: 18px;
+    }
+    .cred-icon.exit { background: rgba(201,168,76,0.12); }
+    .cred-icon.ops { background: rgba(59,130,246,0.1); }
+    .cred-icon.rank { background: rgba(16,185,129,0.1); }
+    .cred-card h4 { font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; }
+    .cred-card p { font-size: 14px; color: #6b7280; line-height: 1.55; }
+
+    /* Results bar */
     .results-bar {
       padding: 24px 28px;
       border-radius: 16px;
       background: #fff;
       border: 1px solid var(--border-light);
       border-left: 3px solid var(--gold);
+      margin-bottom: 24px;
     }
     .results-bar h3 {
       font-size: 12px;
@@ -374,6 +393,35 @@
       flex-shrink: 0;
       margin-top: 9px;
     }
+
+    /* Track record rotator */
+    .track-record {
+      padding: 20px 28px;
+      border-radius: 16px;
+      background: var(--navy);
+      text-align: center;
+      min-height: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .track-record-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(201,168,76,0.5);
+      margin-bottom: 10px;
+    }
+    .track-record-text {
+      font-size: 15px;
+      color: var(--text-light);
+      line-height: 1.5;
+      max-width: 500px;
+      transition: opacity 0.5s ease;
+    }
+    .track-record-text.fading { opacity: 0; }
 
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
        WHAT WE WORK ON (ACCORDION)
@@ -1066,34 +1114,44 @@
       <div class="eyebrow reveal"><span>Why Me</span></div>
       <div class="about-top reveal">
         <div class="about-photo">
-          <img src="src/assets/etgar-portrait.jpg" alt="Etgar Shpivak - Go-To-Market Advisor" width="140" height="140" loading="lazy">
+          <img src="src/assets/etgar-portrait.jpg" alt="Etgar Shpivak - Go-To-Market Advisor" width="120" height="120" loading="lazy">
         </div>
         <div>
           <h2>I've been the founder in that room.</h2>
-          <p class="about-bio">Not a consultant who read about it. I built Fixel from zero to hundreds of paying clients — AutoTrader, Purple, Globo — hired wrong, ran low on runway, pivoted, and exited. I've been both the founder and the marketer. I see what you can't, because I'm not inside it.</p>
+          <p class="about-bio">I built it — grew from zero to hundreds of paying clients, including AutoTrader, Purple, and Globo — hired wrong, ran low on runway, pivoted, and exited successfully. I've been both the founder and the marketer. I see what you can't, because I'm not inside it.</p>
         </div>
       </div>
-      <div class="stats-strip reveal">
-        <div class="stat">
-          <div class="stat-num">1 Exit</div>
-          <div class="stat-label">As Founder</div>
+
+      <div class="cred-grid reveal">
+        <div class="cred-card">
+          <div class="cred-icon exit">🚀</div>
+          <h4>Built &amp; sold a startup</h4>
+          <p>Co-founded Fixel. Clients saw up to 300% revenue growth. Acquired by Logiq in 2020. Techstars Atlanta '18 and Plug and Play '20.</p>
         </div>
-        <div class="stat">
-          <div class="stat-num">1 Exit</div>
-          <div class="stat-label">As VP Marketing</div>
+        <div class="cred-card">
+          <div class="cred-icon ops">💡</div>
+          <h4>The operator's eye</h4>
+          <p>15+ years running campaigns personally across Meta, Google, TikTok, and programmatic. I know exactly what's broken and what to fix.</p>
         </div>
-        <div class="stat">
-          <div class="stat-num">1 Startup</div>
-          <div class="stat-label">That failed</div>
+        <div class="cred-card" style="grid-column: 1 / -1;">
+          <div class="cred-icon rank">🏆</div>
+          <h4>Top 25 globally in paid advertising</h4>
+          <p>Recognized by PPC Hero as one of the 25 most influential PPC leaders worldwide. Co-authored a bestselling marketing book — 20,000+ copies sold.</p>
         </div>
       </div>
+
       <div class="results-bar reveal">
-        <h3>Results</h3>
+        <h3>Advisory results that show up in the numbers</h3>
         <ul>
-          <li>Mentored a founder from early product to acquisition</li>
-          <li>Built initial sales infrastructure for US market entry</li>
-          <li>Helped a FinTech refocus ICP — LTV up 50%, CAC down 30%</li>
+          <li>Mentored a founder from early product through to a successful acquisition</li>
+          <li>Built the initial sales infrastructure for a startup entering the US accounting market</li>
+          <li>Helped a FinTech company refocus its ICP. LTV up 50%, CAC down 30%</li>
         </ul>
+      </div>
+
+      <div class="track-record reveal">
+        <p class="track-record-label">More from the track record</p>
+        <p class="track-record-text" id="track-text">Grew a digital department 10x in a single year at one of Israel's leading agencies</p>
       </div>
     </div>
   </section>
@@ -1497,6 +1555,27 @@
       t.className = 'toast ' + type + ' show';
       setTimeout(() => t.classList.remove('show'), 4000);
     }
+
+    // Rotating track record
+    (function() {
+      const tracks = [
+        'Grew a digital department 10x in a single year at one of Israel\'s leading agencies',
+        'Built social media presence for leading Israeli brands in telecom, food, automotive, and finance',
+        'Strategic marketing advisor to Ono Academic College — today Israel\'s largest and most recommended college',
+        'Mentored 100+ startups as a Techstars mentor, helping founders build go-to-market strategy from the ground up'
+      ];
+      let idx = 0;
+      const el = document.getElementById('track-text');
+      if (!el) return;
+      setInterval(() => {
+        el.classList.add('fading');
+        setTimeout(() => {
+          idx = (idx + 1) % tracks.length;
+          el.textContent = tracks[idx];
+          el.classList.remove('fading');
+        }, 500);
+      }, 5000);
+    })();
 
     // Rotating proof bar
     (function() {
