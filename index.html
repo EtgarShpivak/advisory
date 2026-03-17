@@ -860,14 +860,28 @@
       margin-bottom: 24px;
       opacity: 0.7;
     }
-    .media-grid {
-      display: grid;
-      gap: 16px;
-      grid-template-columns: 1fr;
+    .media-scroll-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(201,168,76,0.3) transparent;
+      margin: 0 -24px;
+      padding: 0 24px 16px;
     }
-    @media (min-width: 640px) { .media-grid { grid-template-columns: 1fr 1fr; } }
-    @media (min-width: 1024px) { .media-grid { grid-template-columns: repeat(3, 1fr); } }
+    .media-scroll-wrap::-webkit-scrollbar { height: 6px; }
+    .media-scroll-wrap::-webkit-scrollbar-track { background: transparent; }
+    .media-scroll-wrap::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.25); border-radius: 3px; }
+    .media-scroll-wrap::-webkit-scrollbar-thumb:hover { background: rgba(201,168,76,0.45); }
+    @media (min-width: 768px) { .media-scroll-wrap { margin: 0 -48px; padding: 0 48px 16px; } }
+    .media-grid {
+      display: flex;
+      gap: 16px;
+      width: max-content;
+    }
     .media-card {
+      width: 300px;
+      min-width: 300px;
       background: rgba(255,255,255,0.04);
       border: 1px solid var(--border-dark);
       border-radius: 16px;
@@ -875,6 +889,7 @@
       transition: all 0.3s;
       display: flex;
       flex-direction: column;
+      scroll-snap-align: start;
     }
     .media-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-2px); }
     .media-thumb {
@@ -1384,7 +1399,7 @@
 
       <!-- Talks & Interviews -->
       <p class="media-grid-label reveal">Talks & Interviews</p>
-      <div class="media-grid reveal">
+      <div class="media-scroll-wrap reveal"><div class="media-grid">
 
         <a href="https://youtube.com/watch?v=gDK9WaaJnqw" target="_blank" rel="noopener noreferrer" class="media-card">
           <div class="media-thumb" style="background: linear-gradient(135deg, #1a0a2e, #2d1b4e);">
@@ -1425,11 +1440,11 @@
           </div>
         </a>
 
-      </div>
+      </div></div>
 
       <!-- Featured In & Written For -->
       <p class="media-grid-label reveal" style="margin-top: 48px;">Featured In & Written For</p>
-      <div class="media-grid reveal">
+      <div class="media-scroll-wrap reveal"><div class="media-grid">
 
         <a href="https://ppchero.com/author/etgarshpivak/" target="_blank" rel="noopener noreferrer" class="media-card">
           <div class="media-thumb" style="background: linear-gradient(135deg, #1a1a2e, #2a2a4e);">
@@ -1496,7 +1511,7 @@
           </div>
         </a>
 
-      </div>
+      </div></div>
     </div>
   </section>
 
