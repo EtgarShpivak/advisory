@@ -173,15 +173,21 @@
       padding: 28px 0;
       background: var(--navy);
       border-top: 1px solid var(--border-dark);
+      min-height: 96px;
+      display: flex;
+      align-items: center;
     }
     .proof-bar-inner {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 16px;
+      gap: 8px;
       text-align: center;
-      flex-wrap: wrap;
+      width: 100%;
+      transition: opacity 0.5s ease;
     }
+    .proof-bar-inner.fading { opacity: 0; }
     .proof-bar blockquote {
       font-size: 15px;
       color: var(--muted-light);
@@ -195,8 +201,6 @@
       color: var(--gold);
       white-space: nowrap;
     }
-    .proof-bar-inner { transition: opacity 0.5s ease; }
-    .proof-bar-inner.fading { opacity: 0; }
 
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
        PROBLEM
@@ -711,6 +715,173 @@
     .li-link { display: inline-block; margin-top: 20px; font-size: 13px; font-weight: 600; color: var(--gold); }
 
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       CONTENT / MEDIA
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .content-section { padding: var(--section-pad) 0; background: var(--navy); }
+    .content-section h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 400;
+      color: var(--text-light);
+      margin-bottom: 12px;
+    }
+    .content-sub { font-size: 17px; color: var(--muted-light); margin-bottom: 48px; }
+
+    /* Podcast hero card */
+    .podcast-hero {
+      background: linear-gradient(135deg, rgba(201,168,76,0.12) 0%, rgba(201,168,76,0.03) 100%);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      transition: border-color 0.3s;
+    }
+    .podcast-hero:hover { border-color: rgba(201,168,76,0.4); }
+    @media (min-width: 768px) { .podcast-hero { flex-direction: row; align-items: center; gap: 40px; } }
+    .podcast-cover {
+      width: 160px;
+      height: 160px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--gold), #8b6914);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    .podcast-cover::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15) 0%, transparent 60%);
+    }
+    .podcast-cover svg { width: 56px; height: 56px; color: var(--navy); position: relative; z-index: 1; }
+    .podcast-info { flex: 1; }
+    .podcast-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: rgba(201,168,76,0.15);
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .podcast-info h3 {
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 400;
+      color: var(--text-light);
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+    .podcast-desc { font-size: 15px; color: var(--muted-light); line-height: 1.65; margin-bottom: 20px; }
+    .podcast-links { display: flex; flex-wrap: wrap; gap: 10px; }
+    .podcast-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    .podcast-link.spotify { background: #1DB954; color: #fff; }
+    .podcast-link.spotify:hover { background: #1ed760; }
+    .podcast-link.youtube { background: #ff0000; color: #fff; }
+    .podcast-link.youtube:hover { background: #cc0000; }
+    .podcast-link svg { width: 16px; height: 16px; }
+
+    /* Media grid */
+    .media-grid-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+      opacity: 0.7;
+    }
+    .media-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 640px) { .media-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 1024px) { .media-grid { grid-template-columns: repeat(3, 1fr); } }
+    .media-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border-dark);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+    .media-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-2px); }
+    .media-thumb {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .media-thumb img, .media-thumb svg { width: 100%; height: 100%; object-fit: cover; }
+    .media-type-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .media-type-badge.video { background: #ff0000; color: #fff; }
+    .media-type-badge.article { background: rgba(201,168,76,0.9); color: var(--navy); }
+    .media-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+    .media-source {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+      opacity: 0.7;
+    }
+    .media-title {
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--text-light);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .media-desc { font-size: 13px; color: var(--muted-light); line-height: 1.55; flex: 1; margin-bottom: 12px; }
+    .media-read {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold);
+      transition: gap 0.2s;
+    }
+    .media-card:hover .media-read { gap: 8px; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
        FOOTER
        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     .footer {
@@ -1124,11 +1295,157 @@
     </div>
   </section>
 
+  <!-- ━━━ CONTENT / MEDIA ━━━ -->
+  <section class="content-section" id="content">
+    <div class="container">
+      <div class="eyebrow reveal" style="--gold: #c9a84c;"><span>Content & Media</span></div>
+      <h2 class="reveal">Learn before you hire.</h2>
+      <p class="content-sub reveal">Podcasts, talks, and articles — so you can see how I think before we ever meet.</p>
+
+      <!-- Podcast hero -->
+      <div class="podcast-hero reveal">
+        <div class="podcast-cover">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a4 4 0 0 0-4 4v7a4 4 0 0 0 8 0V5a4 4 0 0 0-4-4z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23" stroke="currentColor" stroke-width="2"/><line x1="8" y1="23" x2="16" y2="23" stroke="currentColor" stroke-width="2"/></svg>
+        </div>
+        <div class="podcast-info">
+          <div class="podcast-badge">🎙️ Weekly Podcast</div>
+          <h3>Founders' Marketing Compass</h3>
+          <p class="podcast-desc">Real conversations with founders and marketing leaders about what actually works in GTM — no theory, no fluff. From early-stage positioning to scaling what converts.</p>
+          <div class="podcast-links">
+            <a href="https://open.spotify.com/show/6vBCY3fsfJu41nq5LQNsDe" target="_blank" rel="noopener noreferrer" class="podcast-link spotify">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381C8.64 5.801 15.72 6.001 20.1 8.82c.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+              Spotify
+            </a>
+            <a href="https://www.youtube.com/@etgar" target="_blank" rel="noopener noreferrer" class="podcast-link youtube">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/><polygon fill="#fff" points="9.545,15.568 15.818,12 9.545,8.432"/></svg>
+              YouTube
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Talks & Interviews -->
+      <p class="media-grid-label reveal">Talks & Interviews</p>
+      <div class="media-grid reveal">
+
+        <a href="https://youtube.com/watch?v=gDK9WaaJnqw" target="_blank" rel="noopener noreferrer" class="media-card">
+          <div class="media-thumb" style="background: linear-gradient(135deg, #1a0a2e, #2d1b4e);">
+            <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg"><rect width="320" height="180" fill="#1a0a2e"/><circle cx="160" cy="70" r="30" fill="none" stroke="#c9a84c" stroke-width="2" opacity="0.3"/><polygon points="150,58 150,82 175,70" fill="#c9a84c" opacity="0.7"/><text x="160" y="120" text-anchor="middle" font-family="system-ui" font-size="11" fill="#c9a84c" opacity="0.8">OnoThink</text><text x="160" y="140" text-anchor="middle" font-family="system-ui" font-size="9" fill="#8a7a9a">Academic Lecture</text></svg>
+            <span class="media-type-badge video">Video</span>
+          </div>
+          <div class="media-body">
+            <p class="media-source">OnoThink · Ono Academic College</p>
+            <p class="media-title">How Did I Almost Crush My Startup</p>
+            <p class="media-desc">The founding mistakes that nearly killed Fixel — and the one pivot decision that saved it.</p>
+            <span class="media-read">Watch →</span>
+          </div>
+        </a>
+
+        <a href="https://www.youtube.com/watch?v=Ibspq6QxnoU" target="_blank" rel="noopener noreferrer" class="media-card">
+          <div class="media-thumb" style="background: linear-gradient(135deg, #0a1628, #1a2a4e);">
+            <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg"><rect width="320" height="180" fill="#0a1628"/><circle cx="160" cy="70" r="30" fill="none" stroke="#3b82f6" stroke-width="2" opacity="0.3"/><polygon points="150,58 150,82 175,70" fill="#3b82f6" opacity="0.7"/><text x="160" y="120" text-anchor="middle" font-family="system-ui" font-size="11" fill="#3b82f6" opacity="0.8">Building Digital Products</text><text x="160" y="140" text-anchor="middle" font-family="system-ui" font-size="9" fill="#7a8a9a">Podcast Interview</text></svg>
+            <span class="media-type-badge video">Video</span>
+          </div>
+          <div class="media-body">
+            <p class="media-source">Building Digital Products · Podcast</p>
+            <p class="media-title">Use Customer Pain to Build Product Strategy</p>
+            <p class="media-desc">Why the best product strategies start with customer frustration, not feature wishlists.</p>
+            <span class="media-read">Watch →</span>
+          </div>
+        </a>
+
+        <a href="https://www.youtube.com/watch?v=AoN5INAqXwo" target="_blank" rel="noopener noreferrer" class="media-card">
+          <div class="media-thumb" style="background: linear-gradient(135deg, #0a2818, #1a4a2e);">
+            <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg"><rect width="320" height="180" fill="#0a2818"/><circle cx="160" cy="70" r="30" fill="none" stroke="#10b981" stroke-width="2" opacity="0.3"/><polygon points="150,58 150,82 175,70" fill="#10b981" opacity="0.7"/><text x="160" y="120" text-anchor="middle" font-family="system-ui" font-size="11" fill="#10b981" opacity="0.8">Think Big</text><text x="160" y="140" text-anchor="middle" font-family="system-ui" font-size="9" fill="#7a9a8a">Dan &amp; Qasim · Zing</text></svg>
+            <span class="media-type-badge video">Video</span>
+          </div>
+          <div class="media-body">
+            <p class="media-source">Think Big · Zing</p>
+            <p class="media-title">Navigating the B2B SaaS Landscape</p>
+            <p class="media-desc">How to find real traction in B2B SaaS when every metric says "it depends."</p>
+            <span class="media-read">Watch →</span>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- Featured In & Written For -->
+      <p class="media-grid-label reveal" style="margin-top: 48px;">Featured In & Written For</p>
+      <div class="media-grid reveal">
+
+        <a href="https://ppchero.com/author/etgarshpivak/" target="_blank" rel="noopener noreferrer" class="media-card">
+          <div class="media-thumb" style="background: linear-gradient(135deg, #1a1a2e, #2a2a4e);">
+            <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg"><rect width="320" height="180" fill="#1a1a2e"/><text x="160" y="75" text-anchor="middle" font-family="system-ui" font-size="28" font-weight="bold" fill="#c9a84c">PPC</text><text x="160" y="105" text-anchor="middle" font-family="system-ui" font-size="28" font-weight="bold" fill="#ef4444">HERO</text><text x="160" y="140" text-anchor="middle" font-family="system-ui" font-size="10" fill="#7a8a9a">5 Published Articles</text></svg>
+            <span class="media-type-badge article">Articles</span>
+          </div>
+          <div class="media-body">
+            <p class="media-source">PPC Hero · Marketing Publication</p>
+            <p class="media-title">5 Articles on Paid Social Strategy</p>
+            <p class="media-desc">From optimizing Facebook creatives post-iOS 14 to cross-platform measurement — practical playbooks for paid advertising.</p>
+            <span class="media-read">Read articles →</span>
+          </div>
+        </a>
+
+        <a href="https://skai.io/blog/fixel/" target="_blank" rel="noopener noreferrer" class="media-card">
+          <div class="media-thumb" style="background: linear-gradient(135deg, #0a1a2e, #1a3a5e);">
+            <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg"><rect width="320" height="180" fill="#0a1a2e"/><text x="160" y="80" text-anchor="middle" font-family="system-ui" font-size="32" font-weight="bold" fill="#3b82f6">skai</text><text x="160" y="110" text-anchor="middle" font-family="system-ui" font-size="11" fill="#7a8a9a">The Skai 5 · Interview</text><text x="160" y="140" text-anchor="middle" font-family="system-ui" font-size="9" fill="#4a6a8a">Q&amp;A with Co-Founder</text></svg>
+            <span class="media-type-badge article">Interview</span>
+          </div>
+          <div class="media-body">
+            <p class="media-source">Skai (formerly Kenshoo) · Enterprise Platform</p>
+            <p class="media-title">The Skai 5: Interview with Fixel Co-Founder</p>
+            <p class="media-desc">On building an AI-powered marketing tool and the strategic decisions behind Fixel's product vision.</p>
+            <span class="media-read">Read interview →</span>
+          </div>
+        </a>
+
+        <a href="https://www.coxenterprises.com/news/techstars-week-7-leveraging-the-network-1" target="_blank" rel="noopener noreferrer" class="media-card">
+          <div class="media-thumb" style="background: linear-gradient(135deg, #1a2a1a, #2a4a2a);">
+            <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg"><rect width="320" height="180" fill="#1a2a1a"/><text x="160" y="65" text-anchor="middle" font-family="system-ui" font-size="14" font-weight="bold" fill="#c9a84c">TECHSTARS</text><text x="160" y="90" text-anchor="middle" font-family="system-ui" font-size="22" fill="#e8e4dc">×</text><text x="160" y="115" text-anchor="middle" font-family="system-ui" font-size="14" font-weight="bold" fill="#10b981">COX ENTERPRISES</text><text x="160" y="145" text-anchor="middle" font-family="system-ui" font-size="10" fill="#7a9a7a">Week 7 · Leveraging the Network</text></svg>
+            <span class="media-type-badge article">Article</span>
+          </div>
+          <div class="media-body">
+            <p class="media-source">Cox Enterprises · Techstars Atlanta</p>
+            <p class="media-title">Techstars: Leveraging the Network</p>
+            <p class="media-desc">Etgar calls the program "Harvard for startups, on steroids" — how the Techstars network accelerated Fixel's growth.</p>
+            <span class="media-read">Read article →</span>
+          </div>
+        </a>
+
+        <a href="https://hypepotamus.com/companies/fixel/" target="_blank" rel="noopener noreferrer" class="media-card">
+          <div class="media-thumb" style="background: linear-gradient(135deg, #2a1a0a, #4a2a1a);">
+            <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg"><rect width="320" height="180" fill="#2a1a0a"/><text x="160" y="80" text-anchor="middle" font-family="system-ui" font-size="20" font-weight="bold" fill="#f59e0b">HYPEPOTAMUS</text><text x="160" y="110" text-anchor="middle" font-family="system-ui" font-size="11" fill="#a0845a">Southern Startup Ecosystem</text><text x="160" y="140" text-anchor="middle" font-family="system-ui" font-size="9" fill="#7a6a5a">Fixel Feature Story</text></svg>
+            <span class="media-type-badge article">Article</span>
+          </div>
+          <div class="media-body">
+            <p class="media-source">Hypepotamus · Startup News</p>
+            <p class="media-title">Fixel Relocates to Atlanta After Techstars</p>
+            <p class="media-desc">How an AI-powered segmentation tool went from Israeli startup to Techstars alum — and why Atlanta became home base.</p>
+            <span class="media-read">Read article →</span>
+          </div>
+        </a>
+
+        <a href="https://remotescouts.com/blog/top-25-most-influential-ppc-experts-you-need-to-know/" target="_blank" rel="noopener noreferrer" class="media-card">
+          <div class="media-thumb" style="background: linear-gradient(135deg, #1a0a28, #3a1a4a);">
+            <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg"><rect width="320" height="180" fill="#1a0a28"/><text x="160" y="55" text-anchor="middle" font-family="system-ui" font-size="10" fill="#8b5cf6" opacity="0.7">REMOTE SCOUTS</text><text x="160" y="90" text-anchor="middle" font-family="system-ui" font-size="42" font-weight="bold" fill="#c9a84c">#18</text><text x="160" y="120" text-anchor="middle" font-family="system-ui" font-size="12" fill="#e8e4dc">Top 25 PPC Experts</text><text x="160" y="145" text-anchor="middle" font-family="system-ui" font-size="10" fill="#8a7a9a">Global Ranking</text></svg>
+            <span class="media-type-badge article">Ranking</span>
+          </div>
+          <div class="media-body">
+            <p class="media-source">Remote Scouts · Industry Ranking</p>
+            <p class="media-title">Top 25 Most Influential PPC Experts</p>
+            <p class="media-desc">Ranked #18 globally — recognized for decades of hands-on PPC experience, published books, and educational content.</p>
+            <span class="media-read">View ranking →</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ━━━ FOOTER ━━━ -->
   <footer class="footer">
     <div class="container">
-      <p>Weekly podcast on founders & marketing</p>
-      <a href="https://open.spotify.com/show/6vBCY3fsfJu41nq5LQNsDe" target="_blank" rel="noopener noreferrer">Founders' Marketing Compass on Spotify &nearr;</a>
+      <p>&copy; Etgar Shpivak</p>
     </div>
   </footer>
 
@@ -1136,7 +1453,7 @@
   <div class="sticky-cta" id="sticky-cta">
     <a href="#contact" class="sticky-desktop">Book a Call &rarr;</a>
     <div class="sticky-mobile">
-      <span>GTM Advisory — $2,500/mo</span>
+      <span>GTM Advisory</span>
       <a href="#contact">Get Started</a>
     </div>
   </div>
